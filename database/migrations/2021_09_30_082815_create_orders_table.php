@@ -25,7 +25,7 @@ class CreateOrdersTable extends Migration
             $table->integer('users_id')->nullable();
             $table->integer('users_orthopedic_doctors_id')->nullable();
             $table->integer('orthopedic_implants_id')->nullable();
-            $table->integer('orthopedic_implants_grade_id')->nullable();
+            $table->integer('orthopedic_implants_grades_id')->nullable();
             $table->integer('hospital_addresses_id')->nullable();
             $table->integer('hospital_addresses_hospital_cities_id')->nullable();
             $table->timestamps();

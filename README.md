@@ -11,6 +11,12 @@
 
 Metafix is a web application and an orthopedic service online sales and ordering system. This is also the unofficial name of our client's businesss.
 
+## What to consider
+
+**Do not code on the same file(s)**
+
+Avoid overlapping your codes to another developer's codes. Overlapping codes have high chance of getting an error. It's okay to work on the same folder.
+
 ## Errors founded and their solution
 
 **Can't run 'npm run dev' command after installing Laravel's vue ui auth**

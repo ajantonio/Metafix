@@ -18,7 +18,7 @@ class CreateOrthopedicImplantsTable extends Migration
             $table->string('implant_name', 45);
             $table->string('serial_num', 45);
             $table->integer('price');
-            $table->integer('grade_id')->nullable();
+            $table->integer('grades_id')->nullable();
             $table->timestamps();
         });
     }
