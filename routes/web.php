@@ -17,10 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', function(){
+Route::get('/home', function() {
     return view('admin.home');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', function() {
+    return view('orthopedicDoctor.home');
+})->name('orthopedic.doctor.home');
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function() {
+    Route::get('/home', function() {
+        return view('admin.home');
+    });
+});
+
