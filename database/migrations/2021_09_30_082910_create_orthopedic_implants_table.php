@@ -15,10 +15,14 @@ class CreateOrthopedicImplantsTable extends Migration
     {
         Schema::create('orthopedic_implants', function (Blueprint $table) {
             $table->id();
-            $table->string('implant_name', 45);
-            $table->string('serial_num', 45);
-            $table->integer('price');
-            $table->integer('grades_id')->nullable();
+            $table->integer('screw_types_id')->nullable();
+            $table->integer('screw_grades_id')->nullable();
+            $table->integer('screw_price')->nullable();
+            $table->integer('plate_types_id')->nullable();
+            $table->integer('plate_grades_id')->nullable();
+            $table->integer('plate_price')->nullable();
+            $table->string('diameter', 45)->nullable();
+            $table->string('length', 45)->nullable();
             $table->timestamps();
         });
     }

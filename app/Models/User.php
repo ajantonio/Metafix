@@ -7,17 +7,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-use App\Models\Administrator;
-use App\Models\OrthopedicDoctor;
+
+use App\Models\Order;
 
 class User extends Authenticatable
 {
-    public function administrator() {
-        return $this->hasOne(Administrator::class);
-    }
 
-    public function orthopedic_doctors() {
-        return $this->hasMany(OrthopedicDoctor::class);
+    public function orders() {
+        return $this->belongsTo(Order::class);
     }
 
     use HasApiTokens, HasFactory, Notifiable;
@@ -27,7 +24,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = ['username', 'password', 'administrator_id', 'orthopedic_doctors_id'];
+    protected $fillable = ['name', 'username', 'password', 'status', 'email', 'contact_number', 'is_admin'];
 
     /**
      * The attributes that should be hidden for serialization.

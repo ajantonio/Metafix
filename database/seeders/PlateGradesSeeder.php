@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Grade;
+use App\Models\PlateGrade;
 
-class GradesSeeder extends Seeder
+class PlateGradesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,11 +14,11 @@ class GradesSeeder extends Seeder
      */
     public function run()
     {
-        Grade::firstOrCreate([
+        PlateGrade::firstOrCreate([
             'grade_name' => 'Titanium'
         ]);
 
-        Grade::firstOrCreate([
+        PlateGrade::firstOrCreate([
             'grade_name' => 'Stainless'
         ]);
     }

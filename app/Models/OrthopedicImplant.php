@@ -8,10 +8,15 @@ use App\Models\Grade;
 
 class OrthopedicImplant extends Model
 {
-    protected $fillable = ['implant_name', 'serial_num', 'price', 'grades_id'];
+    protected $fillable = ['screw_types_id', 'screw_grades_id', 'screw_price', 'plate_types_id', 'plate_grades_id', 'plate_price'
+    , 'diameter', 'length'];
 
-    public function grades(){
-        return $this->hasMany(Grade::class);
+    public function plate_grades(){
+        return $this->hasMany(PlateGrade::class);
+    }
+
+    public function screw_grades(){
+        return $this->hasMany(ScrewGrade::class);
     }
 
     use HasFactory;
