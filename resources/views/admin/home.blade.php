@@ -1,8 +1,8 @@
 @include('layouts.header')
 
-@include('layouts.navbar')
+@include('layouts.navbaradmin')
         <div id="layoutSidenav">
-@include('layouts.sidebar')
+@include('layouts.sidebaradmin')
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">

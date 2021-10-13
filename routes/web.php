@@ -14,23 +14,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::get('/home', function() {
-    return view('admin.home');
-});
 
 Auth::routes();
 
+// Orthopedic Doctor Routes
+Route::group(['middleware' => ['auth', 'doctor']], function() {
 
-Route::get('/home', function() {
-    return view('orthopedicDoctor.home');
-})->name('orthopedic.doctor.home');
+    // Homepage
+    Route::get('/home', function() {
+        return view('orthopedicDoctor.home');
+    });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function() {
+    // 'Order Orthopedic Implants' Module
+    Route::group(['prefix' => 'orderorthopedicimplants'], function() {
+        Route::get('/', 'OrthopedicDoctor\OrderOrthopedicImplantController@index')->name('orderorthopedicimplant.home');
+    });
+
+});
+
+// Administrator Routes
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
+
+    //Homepage
     Route::get('/home', function() {
         return view('admin.home');
     });
+    
 });
 

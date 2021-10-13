@@ -30,32 +30,32 @@ class Order extends Model
     }
 
     public function plate_grades() {
-        return $this->hasMany(PlateGrade::class, 'orthopedic_implants_plate_grades_id');
+        return $this->hasMany(PlateGrade::class, 'id', 'orthopedic_implants_plate_grades_id');
     }
 
     public function screw_grades() {
-        return $this->hasMany(ScrewGrade::class, 'orthopedic_implants_screw_grades_id');
+        return $this->hasMany(ScrewGrade::class, 'id', 'orthopedic_implants_screw_grades_id');
     }
 
     public function plate_types() {
-        return $this->hasMany(PlateType::class, 'orthopedic_implants_plate_types_id');
+        return $this->hasMany(PlateType::class, 'id', 'orthopedic_implants_plate_types_id');
     }
 
     public function screw_types() {
-        return $this->hasMany(ScrewType::class, 'orthopedic_implants_screw_types_id');
+        return $this->hasMany(ScrewType::class, 'id', 'orthopedic_implants_screw_types_id');
     }
 
     public function hospital_cities() {
-        return $this->hasMany(HospitalCity::class, 'hospital_addresses_hospital_cities_id');
+        return $this->hasMany(HospitalCity::class, 'id', 'hospital_addresses_hospital_cities_id');
     }
 
     public function hospital_addresses() {
-        return $this->hasMany(HospitalAddress::class, 'hospital_addresses_id');
+        return $this->hasMany(HospitalAddress::class, 'id', 'hospital_addresses_id');
     }
 
 
     public function orthopedic_technicians() {
-        return $this->hasMany(OrthopedicTechnician::class);
+        return $this->hasMany(OrthopedicTechnician::class, 'id', 'orthopedic_technicians_id');
     }
 
     use HasFactory;
