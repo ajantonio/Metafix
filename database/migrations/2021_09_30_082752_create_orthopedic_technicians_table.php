@@ -16,7 +16,9 @@ class CreateOrthopedicTechniciansTable extends Migration
         Schema::create('orthopedic_technicians', function (Blueprint $table) {
             $table->id();
             $table->string('name', 45);
+            $table->string('image')->nullable();
             $table->string('contact_number', 45);
+            $table->enum('status', ['On hold', 'Working'])->nullable();
             $table->timestamps();
         });
     }
