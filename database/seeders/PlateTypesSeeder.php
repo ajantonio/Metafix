@@ -16,18 +16,15 @@ class PlateTypesSeeder extends Seeder
     public function run()
     {
         PlateType::firstOrCreate([
-            'type' => 'T Buttress Plates',
-            'image' => Storage::url('images/t-buttress-plates.jpg')
+            'type' => 'T Buttress Plates'
         ]);
 
         PlateType::firstOrCreate([
-            'type' => 'Neutralization Plates',
-            'image' => Storage::url('images/neutralization-plates.jpg')
+            'type' => 'Neutralization Plates'
         ]);
 
         PlateType::firstOrCreate([
-            'type' => 'Bridging Plates',
-            'image' => Storage::url('images/bridging-plates.jpg')
+            'type' => 'Bridging Plates'
         ]);
     }
 }

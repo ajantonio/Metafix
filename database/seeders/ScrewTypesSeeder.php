@@ -16,18 +16,15 @@ class ScrewTypesSeeder extends Seeder
     public function run()
     {
         ScrewType::firstOrCreate([
-            'type' => 'Cortical Screws',
-            'image' => Storage::url('images/cortical-screws.jpg')
+            'type' => 'Cortical Screws'
         ]);
 
         ScrewType::firstOrCreate([
-            'type' => 'Cancellous Screws',
-            'image' => Storage::url('images/cancellous-screws.jpg')
+            'type' => 'Cancellous Screws'
         ]);
 
         ScrewType::firstOrCreate([
-            'type' => 'Cannulated Screws',
-            'image' => Storage::url('images/cannulated-screws.png')
+            'type' => 'Cannulated Screws'
         ]);
     }
 }

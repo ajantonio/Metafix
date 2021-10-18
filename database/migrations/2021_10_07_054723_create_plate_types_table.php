@@ -16,7 +16,6 @@ class CreatePlateTypesTable extends Migration
         Schema::create('plate_types', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

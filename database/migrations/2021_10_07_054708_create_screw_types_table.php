@@ -16,7 +16,6 @@ class CreateScrewTypesTable extends Migration
         Schema::create('screw_types', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
