@@ -43,4 +43,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/home', function () {
         return view('admin.home');
     });
+
+    // 'Add Orthopedic Technicians' Module
+    Route::group(['prefix' => 'addorthopedictechnicians'], function () {
+        Route::get('/', 'Administrator\AddOrthopedicTechnicians@index')->name('addorthopedictechnicians.home');
+        Route::post('/store', 'Administrator\AddOrthopedicTechnicians@store')->name('addorthopedictechnicians.store');
+    });
+
+    // 'View Orthopedic Technicians' Module
+    Route::group(['prefix' => 'vieworthopedictechnicians'], function () {
+        Route::get('/', 'Administrator\ViewOrthopedicTechnicians@index')->name('vieworthopedictechnicians.home');
+    });
 });
