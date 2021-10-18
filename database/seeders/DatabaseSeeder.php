@@ -20,10 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(OrthopedicImplantsSeeder::class);
         $this->call(OrthopedicTechniciansSeeder::class);
         $this->call(UsersSeeder::class);
-        $this->call(PlateGradesSeeder::class);
+        $this->call(GradeSeeder::class);
         $this->call(PlateTypesSeeder::class);
-        $this->call(ScrewGradesSeeder::class);
         $this->call(ScrewTypesSeeder::class);
-
     }
 }

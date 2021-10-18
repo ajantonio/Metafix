@@ -26,7 +26,6 @@
                         <aside class="col-sm-7">
                             <section class=" card-body p-5">
                                 <h3 class="title mt-3">{{ $orthopedic_implant->name }}</h3>
-                                <!-- price-detail-wrap .// -->
                                 <p>{{ $orthopedic_implant->description }}</p>
 
 
