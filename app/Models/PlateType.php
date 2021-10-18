@@ -8,7 +8,7 @@ use App\Models\OrthopedicImplant;
 
 class PlateType extends Model
 {
-    protected $fillable = ['type', 'image'];
+    protected $fillable = ['type'];
 
 
 

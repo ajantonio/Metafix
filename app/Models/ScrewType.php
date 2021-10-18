@@ -8,9 +8,9 @@ use App\Models\OrthopedicImplant;
 
 class ScrewType extends Model
 {
-    protected $fillable = ['type', 'image'];
+    protected $fillable = ['type'];
 
 
-    
+
     use HasFactory;
 }
