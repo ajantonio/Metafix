@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Order; 
+use App\Models\Order;
 
 class OrthopedicTechnician extends Model
 {
-    protected $fillable = ['name', 'contact_number'];
+    protected $fillable = ['image', 'status', 'name', 'contact_number'];
 
-    public function order() {
+    public function order()
+    {
         return $this->belongsTo(Order::class);
     }
 
