@@ -21,27 +21,26 @@ Route::get('/', function () {
 Auth::routes();
 
 // Orthopedic Doctor Routes
-Route::group(['middleware' => ['auth', 'doctor']], function() {
+Route::group(['middleware' => ['auth', 'doctor']], function () {
 
     // Homepage
-    Route::get('/home', function() {
+    Route::get('/home', function () {
         return view('orthopedicDoctor.home');
     });
 
     // 'Order Orthopedic Implants' Module
-    Route::group(['prefix' => 'orderorthopedicimplants'], function() {
+    Route::group(['prefix' => 'orderorthopedicimplants'], function () {
         Route::get('/', 'OrthopedicDoctor\OrderOrthopedicImplantController@index')->name('orderorthopedicimplant.home');
+        Route::get('/implant/{id}', 'OrthopedicDoctor\OrderOrthopedicImplantController@show')->name('orderorthopedicimplant.show.screw');
+        Route::get('/addToCart/{orthopedic_implant}', 'OrthopedicDoctor\CartController@addToCart')->name('orderorthopedicimplant.add.screw.cart');
     });
-
 });
 
 // Administrator Routes
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
 
     //Homepage
-    Route::get('/home', function() {
+    Route::get('/home', function () {
         return view('admin.home');
     });
-    
 });
-

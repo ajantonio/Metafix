@@ -4,8 +4,8 @@ namespace App\Http\Controllers\OrthopedicDoctor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ScrewType;
 use App\Models\OrthopedicImplant;
+use App\Models\Order;
 
 class OrderOrthopedicImplantController extends Controller
 {
@@ -16,10 +16,8 @@ class OrderOrthopedicImplantController extends Controller
      */
     public function index()
     {
-        $orthopedic_implants = OrthopedicImplant::with('screw_types')
-            ->with('plate_types')
-            ->get();
-        
+        $orthopedic_implants = OrthopedicImplant::get();
+
         // dd($orthopedic_implants);
 
         return view('orthopedicDoctor.modules.orderorthopedicimplant.home', compact('orthopedic_implants'));
@@ -52,10 +50,14 @@ class OrderOrthopedicImplantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
-        //
+        $orthopedic_implant = OrthopedicImplant::find($id);
+        return view('orthopedicDoctor.modules.orderorthopedicimplant.showimplant', compact('orthopedic_implant'));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
