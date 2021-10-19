@@ -17,9 +17,6 @@ class OrderOrthopedicImplantController extends Controller
     public function index()
     {
         $orthopedic_implants = OrthopedicImplant::get();
-
-        // dd($orthopedic_implants);
-
         return view('orthopedicDoctor.modules.orderorthopedicimplant.home', compact('orthopedic_implants'));
     }
 

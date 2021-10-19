@@ -8,12 +8,12 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 mt-5">
                 <table class="table">
-                    <thead class="thead-dark">
+                    <thead class="bg-dark text-light">
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Image</th>
-                            <th scope="col">Full Name</th>
-                            <th scope="col">Contact No.</th>
+                            <th scope="col">Description</th>
                             <th scope="col">Status</th>
                         </tr>
                     </thead>
