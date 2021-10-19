@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth', 'doctor']], function () {
 // Administrator Routes
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
 
-    //Homepage
+    // Homepage
     Route::get('/home', function () {
         return view('admin.home');
     });
@@ -53,5 +53,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     // 'View Orthopedic Technicians' Module
     Route::group(['prefix' => 'vieworthopedictechnicians'], function () {
         Route::get('/', 'Administrator\ViewOrthopedicTechnicians@index')->name('vieworthopedictechnicians.home');
+    });
+
+    // 'View Inventory' Module
+    Route::group(['prefix' => 'viewinventory'], function () {
+        Route::get('/', 'Administrator\ViewInventory@index')->name('viewinventory.view');
     });
 });

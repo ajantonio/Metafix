@@ -21,7 +21,7 @@
                     <div class="sb-nav-link-icon"></div>
                     Add Orthopedic Implants
                 </a>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('viewinventory.view') }}">
                     <div class="sb-nav-link-icon"></div>
                     View Inventory
                 </a>

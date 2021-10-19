@@ -4,25 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ScrewGrade;
-use App\Models\PlateGrade;
+use App\Models\Grade;
 use App\Models\ScrewType;
 use App\Models\PlateType;
 
 class OrthopedicImplant extends Model
 {
     protected $fillable = [
-        'name', 'image', 'description', 'screw_types_id', 'screw_grades_id', 'price', 'plate_types_id', 'plate_grades_id', 'diameter', 'length'
+        'name', 'image', 'description', 'screw_types_id', 'price', 'plate_types_id', 'grades_id', 'diameter', 'length'
     ];
 
-    public function plate_grades()
+    public function grades()
     {
-        return $this->hasMany(PlateGrade::class, 'id', 'plate_grades_id');
-    }
-
-    public function screw_grades()
-    {
-        return $this->hasMany(ScrewGrade::class, 'id', 'screw_grades_id');
+        return $this->hasMany(Grade::class, 'id', 'grades_id');
     }
 
     public function screw_types()
