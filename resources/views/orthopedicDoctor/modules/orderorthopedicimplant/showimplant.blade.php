@@ -14,7 +14,7 @@
                             <section class="gallery-wrap">
                                 <div class="img-big-wrap">
                                     <div>
-                                        <img src="{{ asset($orthopedic_implant->image) }}" style="height: 400px; width: 300px; display: block; margin: auto auto;">
+                                        <img src="{{ Storage::url($orthopedic_implant->image) }}" style="height: 400px; width: 300px; display: block; margin: auto auto;">
                                     </div>
                                 </div>
 
@@ -49,6 +49,11 @@
 
 
                 </div>
+                @if(Session::has('message'))
+                <div class="alert alert-success">
+                    {{ Session::get('message') }}
+                </div>
+                @endif
         </main>
     </div>
 

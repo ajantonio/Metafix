@@ -11,7 +11,7 @@
                     <div class="col-xs-12 col-sm-6 col-md-4 mt-3">
                         <div class="card border border-dark">
                             <a href=" orderorthopedicimplants/implant/{{ $orthopedic_implant->id }} ">
-                                <img class="card-img-top" style="height: 200px; width: 200px; display: block; margin: auto auto;" src="{{ asset($orthopedic_implant->image) }}">
+                                <img class="card-img-top" style="height: 200px; width: 200px; display: block; margin: auto auto;" src="{{ Storage::url($orthopedic_implant->image) }}">
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title ml-1">{{ $orthopedic_implant->name }} </h5>
