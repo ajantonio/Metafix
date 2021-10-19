@@ -20,6 +20,6 @@ class CartController extends Controller
         $cart->add($orthopedic_implant);
 
         session()->put('cart', $cart);
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Added to cart successfully');
     }
 }
