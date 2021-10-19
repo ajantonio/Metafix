@@ -17,7 +17,7 @@
                     Check History Transactions
                 </a>
                 <div class="sb-sidenav-menu-heading text-white">Inventory Management</div>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('addorthopedicimplants.home') }}">
                     <div class="sb-nav-link-icon"></div>
                     Add Orthopedic Implants
                 </a>

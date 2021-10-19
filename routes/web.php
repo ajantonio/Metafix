@@ -59,4 +59,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::group(['prefix' => 'viewinventory'], function () {
         Route::get('/', 'Administrator\ViewInventory@index')->name('viewinventory.view');
     });
+
+    // 'Add Orthopedic Implants' Module
+    Route::group(['prefix' => 'addorthopedicimplants'], function () {
+        Route::get('/', 'Administrator\AddOrthopedicImplants@index')->name('addorthopedicimplants.home');
+        Route::post('/store', 'Administrator\AddOrthopedicImplants@store')->name('addorthopedicimplants.store');
+    });
 });
