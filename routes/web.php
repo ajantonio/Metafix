@@ -34,6 +34,11 @@ Route::group(['middleware' => ['auth', 'doctor']], function () {
         Route::get('/implant/{id}', 'OrthopedicDoctor\OrderOrthopedicImplantController@show')->name('orderorthopedicimplant.show.screw');
         Route::get('/addToCart/{orthopedic_implant}', 'OrthopedicDoctor\CartController@addToCart')->name('orderorthopedicimplant.add.screw.cart');
     });
+
+    // 'View Cart' module
+    Route::group(['prefix' => 'viewcart'], function () {
+        Route::get('/', 'OrthopedicDoctor\CartController@showCart')->name('viewcart.home');
+    });
 });
 
 // Administrator Routes

@@ -22,4 +22,14 @@ class CartController extends Controller
         session()->put('cart', $cart);
         return redirect()->back()->with('message', 'Added to cart successfully');
     }
+
+    public function showCart()
+    {
+        if (session()->has('cart')) {
+            $cart = new Cart(session()->get('cart'));
+        } else {
+            $cart = null;
+        }
+        return view('orthopedicDoctor.modules.ViewCart.cart', compact('cart'));
+    }
 }
