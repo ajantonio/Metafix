@@ -5,6 +5,18 @@
     @include('layouts.sidebardoctor')
     <div id="layoutSidenav_content">
         <div class="container-md px-4 mt-3">
+            @if($errors->any())
+            @foreach($errors->all() as $error)
+            <div class="alert alert-danger">
+                {{ $error }}
+            </div>
+            @endforeach
+            @endif
+            @if(Session::has('message'))
+            <div class="alert alert-success">
+                {{ Session::get('message') }}
+            </div>
+            @endif
             <table id="cart" class="table table-hover ">
 
 
@@ -30,8 +42,11 @@
                         <td>{{ $orthopedic_implant['name'] }}</td>
                         <td>PHP {{ $orthopedic_implant['price'] }}.00</td>
                         <td>
-                            <input type="text" name="qty">
-                            <button class="btn btn-secondary btn-sm"><i class="fas fa-sync"></i>update</button>
+                            <form action="{{ route('viewcart.update', $orthopedic_implant['id']) }}" method="POST">
+                                @csrf
+                                <input type="text" name="quantity" value="{{ $orthopedic_implant['quantity'] }}">
+                                <button class="btn btn-secondary btn-sm"><i class="fas fa-sync"></i>update</button>
+                            </form>
                         </td>
                         <td><button class="btn btn-danger">Remove</button></td>
                     </tr>

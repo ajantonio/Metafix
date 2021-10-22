@@ -27,7 +27,7 @@ class Cart
             'id' => $orthopedic_implant->id,
             'name' => $orthopedic_implant->name,
             'price' => $orthopedic_implant->price,
-            'qty' => 0,
+            'quantity' => 0,
             'image' => $orthopedic_implant->image
         ];
 
@@ -39,6 +39,17 @@ class Cart
             $this->totalQty += 1;
             $this->totalPrice += $orthopedic_implant->price;
         }
-        $this->items[$orthopedic_implant->id]['qty'] += 1;
+        $this->items[$orthopedic_implant->id]['quantity'] += 1;
+    }
+
+    public function updateQty($id, $quantity)
+    {
+        $this->totalQty -= $this->items[$id]['quantity'];
+        $this->totalPrice -= $this->items[$id]['price'] * $this->items[$id]['quantity'];
+
+        // add the item with new qty
+        $this->items[$id]['quantity'] = $quantity;
+        $this->totalQty += $quantity;
+        $this->totalPrice += $this->items[$id]['price'] * $quantity;
     }
 }

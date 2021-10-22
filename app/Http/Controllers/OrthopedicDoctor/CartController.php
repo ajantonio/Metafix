@@ -32,4 +32,18 @@ class CartController extends Controller
         }
         return view('orthopedicDoctor.modules.ViewCart.cart', compact('cart'));
     }
+
+    public function updateCart(Request $request, OrthopedicImplant $orthopedic_implant)
+    {
+        $request->validate([
+            'quantity' => 'required|numeric|min:1'
+        ]);
+
+
+        $cart = new Cart(session()->get('cart'));
+        $cart->updateQty($orthopedic_implant->id, $request->quantity);
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('message', 'Item quantity updated successfully');
+    }
 }
