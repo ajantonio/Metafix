@@ -15,7 +15,8 @@ class UsersSeeder extends Seeder
     public function run()
     {
         User::firstOrCreate([
-            'name' => 'George Washington',
+            'first_name' => 'George',
+            'last_name' => 'Washington',
             'username' => 'admin',
             'password' => bcrypt('password'),
             'status' => null,
@@ -25,10 +26,12 @@ class UsersSeeder extends Seeder
         ]);
 
         User::firstOrCreate([
-            'name' => 'Adrian John Antonio',
+            'first_name' => 'Adrian John',
+            'last_name' => 'Antonio',
             'username' => 'ajantonio',
             'password' => bcrypt('password'),
             'status' => 'accepted',
+            'orthopedic_license_number' => '1234567890',
             'email' => 'ajantonio@yahoo.com',
             'contact_number' => '09771831344',
             'is_admin' => 0
