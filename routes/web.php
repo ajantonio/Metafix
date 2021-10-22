@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth', 'doctor']], function () {
     Route::group(['prefix' => 'viewcart'], function () {
         Route::get('/', 'OrthopedicDoctor\CartController@showCart')->name('viewcart.home');
         Route::post('/orthopedicimplants/{orthopedic_implant}', 'OrthopedicDoctor\CartController@updateCart')->name('viewcart.update');
-        Route::post('/orthopedicimplant/{orthopedic_implant}', 'OrthopedicDoctor\CartController@removeCart')->name('viewcart.remove');
+        Route::post('/delete/{orthopedic_implant}', 'OrthopedicDoctor\CartController@removeCart')->name('viewcart.remove');
     });
 });
 

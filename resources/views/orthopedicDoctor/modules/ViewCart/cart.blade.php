@@ -48,7 +48,10 @@
                                 <button class="btn btn-secondary btn-sm"><i class="fas fa-sync"></i>update</button>
                             </form>
                         </td>
-                        <td><button class="btn btn-danger">Remove</button></td>
+                        <form action="{{ route('viewcart.remove', $orthopedic_implant['id']) }}" method="POST">
+                            @csrf
+                            <td><button class="btn btn-danger">Remove</button></td>
+                        </form>
                     </tr>
                     @endforeach
                 </tbody>

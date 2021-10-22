@@ -46,4 +46,16 @@ class CartController extends Controller
 
         return redirect()->back()->with('message', 'Item quantity updated successfully');
     }
+
+    public function removeCart(OrthopedicImplant $orthopedic_implant)
+    {
+        $cart = new Cart(session()->get('cart'));
+        $cart->remove($orthopedic_implant->id);
+        if ($cart->totalQty <= 0) {
+            session()->forget('cart');
+        } else {
+            session()->put('cart', $cart);
+        }
+        return redirect()->back()->with('message', 'Item removed successfully');
+    }
 }
