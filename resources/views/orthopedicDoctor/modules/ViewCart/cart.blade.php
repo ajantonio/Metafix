@@ -58,9 +58,8 @@
             </table>
             <hr>
             <div class="card-footer">
-                <button class="btn btn-warning">Continue Shopping</button>
-                <span style="margin-left:300px;"><b>Total Price:</b> PHP {{ $cart->totalPrice }}.00</span>
-                <button class="btn btn-info float-right">Checkout</button>
+                <span><b>Total Price:</b> PHP {{ $cart->totalPrice }}.00</span>
+                <a href="{{ route('orderorthopedicimplant.cart.checkout', $cart->totalPrice) }}"><button class="btn btn-info float-right">Checkout</button></a>
             </div>
 
         </div>

@@ -58,4 +58,9 @@ class CartController extends Controller
         }
         return redirect()->back()->with('message', 'Item removed successfully');
     }
+
+    public function checkout($amount)
+    {
+        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.checkout', compact('amount'));
+    }
 }
