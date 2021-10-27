@@ -14,7 +14,7 @@
                     Check History Transactions
                 </a>
                 <div class="sb-sidenav-menu-heading text-white">Inventory</div>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('viewcart.home') }}">
                     <div class="sb-nav-link-icon"></div>
                     View Cart ({{ session()->has('cart') ? session()->get('cart')->totalQty:'0' }})
                 </a>

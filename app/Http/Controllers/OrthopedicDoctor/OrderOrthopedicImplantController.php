@@ -17,7 +17,7 @@ class OrderOrthopedicImplantController extends Controller
     public function index()
     {
         $orthopedic_implants = OrthopedicImplant::get();
-        return view('orthopedicDoctor.modules.orderorthopedicimplant.home', compact('orthopedic_implants'));
+        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.home', compact('orthopedic_implants'));
     }
 
     /**
@@ -51,7 +51,7 @@ class OrderOrthopedicImplantController extends Controller
     public function show($id)
     {
         $orthopedic_implant = OrthopedicImplant::find($id);
-        return view('orthopedicDoctor.modules.orderorthopedicimplant.showimplant', compact('orthopedic_implant'));
+        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.showimplant', compact('orthopedic_implant'));
     }
 
 
