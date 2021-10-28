@@ -29,13 +29,29 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
 
-                                    <label class="mb-2 mt-2"><b>Hospital City</b></label>
-                                    <input type="text" name="city" id="city" class="form-control" required="">
+                                    <label class="mb-2 mt-2"><b>City</b></label>
+                                    <select name="city" class="form-control @error('city') is-invalid @enderror">
+                                        <option value="">Select</option>
+                                        @foreach(App\Models\HospitalCity::all() as $city)
+                                        <option value="{{ $city->id }}">{{ $city->city }}</option>
+                                        @endforeach
+                                        @error('city')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-12">
 
                                     <label class="mb-2 mt-2"><b>Hospital Address</b></label>
-                                    <input type="text" name="state" id="state" class="form-control" required="">
+                                    <select name="address" class="form-control @error('address') is-invalid @enderror">
+                                        @error('address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </select>
                                 </div>
                             </div>
 
@@ -51,11 +67,34 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="city"]').on('change', function() {
+                var cityId = $(this).val();
+                if (cityId) {
+                    $.ajax({
+                        url: '/orderorthopedicimplants/hospitaladdresses/' + cityId,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="address"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="address"]').append('<option value="' + key + '">' + value + '</option>');
+                            });
+
+
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 
     <script>
         $('#date-of-reservation').datetimepicker({
@@ -76,5 +115,7 @@
             value: ''
         })
     </script>
+
+
 
     @include('layouts.footer')

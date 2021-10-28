@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\OrthopedicImplant;
 use App\Models\Cart;
+use App\Models\HospitalAddress;
+use App\Models\HospitalCity;
 
 class CartController extends Controller
 {
@@ -59,8 +61,22 @@ class CartController extends Controller
         return redirect()->back()->with('message', 'Item removed successfully');
     }
 
-    public function checkout($amount)
+    public function checkout($amount, HospitalAddress $hospital_addresses, HospitalCity $hospital_cities)
     {
-        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.checkout', compact('amount'));
+        $hospital_addresses = HospitalAddress::with('hospital_city')
+            ->get();
+        $hospital_cities = HospitalCity::get();
+
+        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.checkout', compact('amount', 'hospital_addresses', 'hospital_cities'));
+    }
+
+    public function loadHospitalAddress(Request $request, $id)
+    {
+        $hospital_addresses = HospitalAddress::where('hospital_cities_id', $id)
+            ->pluck('address', 'id');
+
+
+        // It works as expected
+        return response()->json($hospital_addresses);
     }
 }
