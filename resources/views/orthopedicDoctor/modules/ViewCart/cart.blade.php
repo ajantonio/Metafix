@@ -40,7 +40,7 @@
                         <th scope="row">{{ $i++ }}</th>
                         <td><img src="{{ Storage::url($orthopedic_implant['image']) }}" width="100"></td>
                         <td>{{ $orthopedic_implant['name'] }}</td>
-                        <td>PHP {{ $orthopedic_implant['price'] }}.00</td>
+                        <td>₱ {{ $orthopedic_implant['price'] }}.00</td>
                         <td>
                             <form action="{{ route('viewcart.update', $orthopedic_implant['id']) }}" method="POST">
                                 @csrf
@@ -58,7 +58,7 @@
             </table>
             <hr>
             <div class="card-footer">
-                <span><b>Total Price:</b> PHP {{ $cart->totalPrice }}.00</span>
+                <span><b>Total Price:</b> ₱ {{ $cart->totalPrice }}.00</span>
                 <a href="{{ route('orderorthopedicimplant.cart.checkout', $cart->totalPrice) }}"><button class="btn btn-info float-right">Checkout</button></a>
             </div>
 

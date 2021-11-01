@@ -17,7 +17,7 @@
                                 <h5 class="card-title ml-1">{{ $orthopedic_implant->name }} </h5>
                                 <h6> <b>Length Size:</b> {{ $orthopedic_implant->length }}</h6>
                                 <h6> <b>Diameter Size:</b> {{ $orthopedic_implant->diameter }}</h6>
-                                <p class="mt-2"><b>Price:</b> PHP {{ $orthopedic_implant->price }}.00 </p>
+                                <p class="mt-2"><b>Price:</b> ₱ {{ $orthopedic_implant->price }}.00 </p>
                             </div>
                         </div>
                     </div>

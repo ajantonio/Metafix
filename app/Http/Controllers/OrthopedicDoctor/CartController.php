@@ -63,13 +63,17 @@ class CartController extends Controller
 
     public function checkout($amount, HospitalAddress $hospital_addresses, HospitalCity $hospital_cities)
     {
+        if (session()->has('cart')) {
+            $cart = new Cart(session()->get('cart'));
+        } else {
+            $cart = null;
+        }
+
         $hospital_addresses = HospitalAddress::with('hospital_city')
             ->get();
         $hospital_cities = HospitalCity::get();
 
-        dd(session()->get('cart'));
-
-        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.checkout', compact('amount', 'hospital_addresses', 'hospital_cities'));
+        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.checkout', compact('amount', 'hospital_addresses', 'hospital_cities', 'cart'));
     }
 
     public function loadHospitalAddress(Request $request, $id)
