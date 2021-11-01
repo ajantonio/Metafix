@@ -18,19 +18,19 @@
                                 <div class="form-group col-md-6">
 
                                     <label class="mb-2"><b>Surgery Date</b></label>
-                                    <input type="text" name="surgery_date" id="date-of-reservation" class="form-control" required="">
+                                    <input type="text" name="surgery_date" id="surgery_date" class="form-control" required="">
                                 </div>
                                 <div class="form-group col-md-6">
 
                                     <label class="mb-2"><b>Surgery Start Time</b></label>
-                                    <input type="text" name="surgery_time" id="time-of-reservation" class="form-control" required="">
+                                    <input type="text" name="surgery_time" id="surgery_time" class="form-control" required="">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
 
                                     <label class="mb-2 mt-2"><b>City</b></label>
-                                    <select name="city" class="form-control @error('city') is-invalid @enderror">
+                                    <select name="city" id="city" class="form-control @error('city') is-invalid @enderror">
                                         <option value="">Select</option>
                                         @foreach(App\Models\HospitalCity::all() as $city)
                                         <option value="{{ $city->id }}">{{ $city->city }}</option>
@@ -45,7 +45,7 @@
                                 <div class="form-group col-md-12">
 
                                     <label class="mb-2 mt-2"><b>Hospital Address</b></label>
-                                    <select name="address" class="form-control @error('address') is-invalid @enderror">
+                                    <select name="address" id="address" class="form-control @error('address') is-invalid @enderror">
                                         @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -55,11 +55,7 @@
                                 </div>
                             </div>
 
-                            <div class="">
-                                <input type="hidden" name="amount" value="{{$amount}}">
-
-
-                                <button class="btn btn-primary mt-3">Submit Payment</button>
+                            <button class="btn btn-primary mt-4" type="submit">Generate Quotation</button>
                         </form>
                     </div>
                 </div>
@@ -72,7 +68,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 
+    <!-- Dependent dropdown buttons -->
     <script type="text/javascript">
         $(document).ready(function() {
             $('select[name="city"]').on('change', function() {
@@ -96,8 +94,9 @@
         });
     </script>
 
+    <!-- Date and Time Picker -->
     <script>
-        $('#date-of-reservation').datetimepicker({
+        $('#surgery_date').datetimepicker({
             timepicker: false,
             datepicker: true,
             format: 'Y-m-d', //format date
@@ -107,12 +106,13 @@
 
 
 
-        $('#time-of-reservation').timepicker({
+        $('#surgery_time').timepicker({
             timeFormat: 'h:mm p',
             minTime: '6:00 am',
             maxTime: '11:00 pm',
             timepicker: true,
-            value: ''
+            value: '',
+            interval: 5
         })
     </script>
 

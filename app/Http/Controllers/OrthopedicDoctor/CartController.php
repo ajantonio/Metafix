@@ -67,6 +67,8 @@ class CartController extends Controller
             ->get();
         $hospital_cities = HospitalCity::get();
 
+        dd(session()->get('cart'));
+
         return view('orthopedicDoctor.modules.OrderOrthopedicImplants.checkout', compact('amount', 'hospital_addresses', 'hospital_cities'));
     }
 
