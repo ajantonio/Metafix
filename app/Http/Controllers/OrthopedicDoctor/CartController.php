@@ -121,11 +121,4 @@ class CartController extends Controller
 
         return view('orthopedicDoctor.modules.OrderOrthopedicImplants.quotation', compact('carts', 'user', 'orders', 'orthopedic_technicians'));
     }
-
-    public function displayQuotation(Request $request)
-    {
-
-
-        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.quotation');
-    }
 }

@@ -36,7 +36,6 @@ Route::group(['middleware' => ['auth', 'doctor']], function () {
         Route::get('/checkout/{amount}', 'OrthopedicDoctor\CartController@checkout')->name('orderorthopedicimplant.cart.checkout');
         Route::get('/hospitaladdresses/{id}', 'OrthopedicDoctor\CartController@loadHospitalAddress')->name('orderorthopedicimplant.surgery.address');
         Route::match(['get', 'post'], '/quotation', 'OrthopedicDoctor\CartController@generateQuotation')->name('orderorthopedicimplant.generate.quotation');
-        Route::get('/display', 'OrthopedicDoctor\CartController@displayQuotation')->name('orderorthopedicimplant.display.quotation');
     });
 
     // 'View Cart' module
