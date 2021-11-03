@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-md-6">
                     <h4 class="mt-5 text-primary">Customer Details</h4>
-                    <p><b>Name: </b>{{ $user->name }}</p>
+                    <p><b>Name: </b>{{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }}</p>
                     <p><b>Contact No.: </b> {{ $user->contact_number }}</p>
                     <p><b>Email: </b> {{ $user->email }}</p>
                     <p><b>Reference id: </b>{{ $orders->reference_id }}</p>
