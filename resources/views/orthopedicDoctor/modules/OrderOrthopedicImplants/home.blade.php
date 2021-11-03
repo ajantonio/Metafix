@@ -23,7 +23,7 @@
                     </div>
                     @endforeach
                 </div>
-                <a href="#" class="btn btn-primary mt-4">Proceed <i class="fas fa-arrow-alt-circle-right"></i></a>
+                <a href="{{ route('viewcart.home') }}" class="btn btn-primary mt-4">Proceed to Your Cart <i class="fas fa-arrow-alt-circle-right"></i></a>
                 <br><br>
             </div>
     </div>

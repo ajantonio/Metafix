@@ -5,9 +5,11 @@ namespace App\Http\Controllers\OrthopedicDoctor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\OrthopedicImplant;
+use App\Models\OrthopedicTechnician;
 use App\Models\Cart;
 use App\Models\HospitalAddress;
 use App\Models\HospitalCity;
+use App\Models\Order;
 
 class CartController extends Controller
 {
@@ -82,7 +84,48 @@ class CartController extends Controller
             ->pluck('address', 'id');
 
 
-        // It works as expected
         return response()->json($hospital_addresses);
+    }
+
+    public function generateQuotation(Request $request)
+    {
+        $this->validate($request, [
+            'surgery_date' => 'required',
+            'surgery_time' => 'required',
+            'hospital_city' => 'required',
+            'hospital_address' => 'required'
+        ]);
+
+        $str = rand();
+        $result = sha1($str);
+
+        $request->user()->orders()->create([
+            'cart' => serialize(session()->get('cart')),
+            'reference_id' => $result,
+            'surgery_date' => $request->surgery_date,
+            'surgery_time' => date('h:i:s', strtotime($request->start_reservation_time)),
+            'hospital_cities_id' => $request->input('hospital_city'),
+            'hospital_addresses_id' => $request->input('hospital_address')
+        ]);
+
+        session()->forget('cart');
+        $order = $request->user()->orders;
+        $carts = $order->transform(function ($cart, $key) {
+            return unserialize($cart->cart);
+        });
+
+        $carts = $carts->last();
+        $user = $request->user();
+        $orders = Order::with('hospital_cities', 'hospital_addresses')->get()->last();
+        $orthopedic_technicians = OrthopedicTechnician::inRandomOrder()->limit(1)->get();
+
+        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.quotation', compact('carts', 'user', 'orders', 'orthopedic_technicians'));
+    }
+
+    public function displayQuotation(Request $request)
+    {
+
+
+        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.quotation');
     }
 }

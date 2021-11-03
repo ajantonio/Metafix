@@ -32,7 +32,7 @@
                                 <hr>
                                 <h6> <b>Length Size:</b> {{ $orthopedic_implant->length }}</h6>
                                 <h6> <b>Diameter Size:</b> {{ $orthopedic_implant->diameter }}</h6>
-                                <p><b>Price</b>: PHP {{ $orthopedic_implant->price }}.00</p>
+                                <p><b>Price</b>: ₱ {{ $orthopedic_implant->price }}.00</p>
 
 
                                 <a href="{{ route('orderorthopedicimplant.add.screw.cart', [$orthopedic_implant->id]) }}">

@@ -9,13 +9,27 @@ use Laravel\Sanctum\HasApiTokens;
 
 
 use App\Models\Order;
+use App\Models\HospitalAddress;
+use App\Models\HospitalCity;
 
 class User extends Authenticatable
 {
 
-    public function orders() {
-        return $this->belongsTo(Order::class);
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
+
+    public function hospital_city()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function hospital_addresses()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 
     use HasApiTokens, HasFactory, Notifiable;
 

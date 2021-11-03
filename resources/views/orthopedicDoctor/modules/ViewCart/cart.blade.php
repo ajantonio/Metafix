@@ -24,7 +24,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Image</th>
-                        <th scope="col">Product</th>
+                        <th scope="col">Implant</th>
                         <th scope="col">Price</th>
                         <th scope="col">Quantity</th>
                         <th>Remove</th>

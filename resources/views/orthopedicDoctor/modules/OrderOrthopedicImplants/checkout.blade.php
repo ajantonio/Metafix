@@ -18,7 +18,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Image</th>
-                                        <th scope="col">Product</th>
+                                        <th scope="col">Implant</th>
                                         <th scope="col">Price</th>
                                         <th scope="col">Quantity</th>
                                     </tr>
@@ -50,29 +50,41 @@
                         <div class="card-header"><b>Checkout</b></div>
                         <div class="card-body">
 
-                            <form action="#" method="post" id="payment-form">@csrf
+                            <form action="{{ route('orderorthopedicimplant.generate.quotation') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <div class="form-group col-md-6">
 
                                         <label class="mb-2"><b>Surgery Date</b></label>
-                                        <input type="text" name="surgery_date" id="surgery_date" class="form-control" required="">
+                                        <input type="text" id="surgery-date" name="surgery_date" class="form-control @error('surgery_date') is-invalid @enderror">
+                                        @error('surgery_date')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class=" form-group col-md-6">
 
                                         <label class="mb-2"><b>Surgery Start Time</b></label>
-                                        <input type="text" name="surgery_time" id="surgery_time" class="form-control" required="">
+                                        <input type="text" name="surgery_time" id="surgery-time" name="surgery_time" class="form-control @error('surgery_time') is-invalid @enderror">
+                                        @error('surgery_time')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="form-group col-md-6">
 
                                         <label class="mb-2 mt-2"><b>City</b></label>
-                                        <select name="city" id="city" class="form-control @error('city') is-invalid @enderror">
+                                        <select id="city" name="hospital_city" class="form-control @error('hospital_city') is-invalid @enderror">
                                             <option value="">Select</option>
                                             @foreach(App\Models\HospitalCity::all() as $city)
                                             <option value="{{ $city->id }}">{{ $city->city }}</option>
                                             @endforeach
-                                            @error('city')
+                                            @error('hospital_city')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -80,10 +92,9 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-md-12">
-
                                         <label class="mb-2 mt-2"><b>Hospital Address</b></label>
-                                        <select name="address" id="address" class="form-control @error('address') is-invalid @enderror">
-                                            @error('address')
+                                        <select name="hospital_address" id="address" name="hospital_address" class="form-control @error('hospital_address') is-invalid @enderror">
+                                            @error('hospital_address')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -92,7 +103,7 @@
                                     </div>
                                 </div>
 
-                                <button class="btn btn-primary mt-4" type="submit">Generate Quotation</button>
+                                <button type="submit" class="btn btn-primary mt-4">Generate Quotation</button>
                             </form>
                         </div>
                     </div>
@@ -113,7 +124,7 @@
 <!-- Dependent dropdown buttons -->
 <script type="text/javascript">
     $(document).ready(function() {
-        $('select[name="city"]').on('change', function() {
+        $('select[name="hospital_city"]').on('change', function() {
             var cityId = $(this).val();
             if (cityId) {
                 $.ajax({
@@ -121,9 +132,9 @@
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-                        $('select[name="address"]').empty();
+                        $('select[name="hospital_address"]').empty();
                         $.each(data, function(key, value) {
-                            $('select[name="address"]').append('<option value="' + key + '">' + value + '</option>');
+                            $('select[name="hospital_address"]').append('<option value="' + key + '">' + value + '</option>');
                         });
 
 
@@ -136,7 +147,7 @@
 
 <!-- Date and Time Picker -->
 <script>
-    $('#surgery_date').datetimepicker({
+    $('#surgery-date').datetimepicker({
         timepicker: false,
         datepicker: true,
         format: 'Y-m-d', //format date
@@ -146,7 +157,7 @@
 
 
 
-    $('#surgery_time').timepicker({
+    $('#surgery-time').timepicker({
         timeFormat: 'h:mm p',
         minTime: '6:00 am',
         maxTime: '11:00 pm',
