@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,20 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+// Route::get('/register', [RegisterController::class, 'create'])
+//                 ->middleware('guest')
+//                 ->name('register');
 
-Auth::routes();
+// Route::post('/register', [RegisterController::class, 'store'])
+//                 ->middleware('guest');
+
+Auth::routes(); 
+
+// Route::group(['middleware' => 'guest'], function () {
+//     Route::get('/login', [LoginController::class, 'index'])->name('login');
+//     Route::get('/register', [LoginController::class, 'register'])->name('register');
+// });
+
 
 // Orthopedic Doctor Routes
 Route::group(['middleware' => ['auth', 'doctor']], function () {
