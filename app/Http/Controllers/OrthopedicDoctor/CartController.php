@@ -98,6 +98,7 @@ class CartController extends Controller
 
         $str = rand();
         $result = sha1($str);
+        $orthopedic_technicians = OrthopedicTechnician::inRandomOrder()->limit(1)->get();
 
         $request->user()->orders()->create([
             'cart' => serialize(session()->get('cart')),
@@ -105,7 +106,9 @@ class CartController extends Controller
             'surgery_date' => $request->surgery_date,
             'surgery_time' => date('h:i:s', strtotime($request->start_reservation_time)),
             'hospital_cities_id' => $request->input('hospital_city'),
-            'hospital_addresses_id' => $request->input('hospital_address')
+            'hospital_addresses_id' => $request->input('hospital_address'),
+            'assigned_technician' => $orthopedic_technicians->first()->name,
+            'technician_contact_number' => $orthopedic_technicians->first()->contact_number
         ]);
 
         session()->forget('cart');
@@ -117,8 +120,7 @@ class CartController extends Controller
         $carts = $carts->last();
         $user = $request->user();
         $orders = Order::with('hospital_cities', 'hospital_addresses')->get()->last();
-        $orthopedic_technicians = OrthopedicTechnician::inRandomOrder()->limit(1)->get();
 
-        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.quotation', compact('carts', 'user', 'orders', 'orthopedic_technicians'));
+        return view('orthopedicDoctor.modules.OrderOrthopedicImplants.quotation', compact('carts', 'user', 'orders'));
     }
 }

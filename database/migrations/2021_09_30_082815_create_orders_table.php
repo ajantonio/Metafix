@@ -21,6 +21,8 @@ class CreateOrdersTable extends Migration
             $table->time('surgery_time')->nullable();
             $table->integer('hospital_cities_id')->nullable();
             $table->integer('hospital_addresses_id')->nullable();
+            $table->string('assigned_technician', 45);
+            $table->string('technician_contact_number', 45);
             $table->text('cart');
             $table->timestamps();
         });

@@ -25,10 +25,8 @@
                     <p><b>Hospital Address: </b>{{ $orders->hospital_addresses->last()->address }}</p>
 
                     <h4 class="mt-5 text-primary">Orthopedic Technician Details</h4>
-                    @foreach($orthopedic_technicians as $orthopedic_technician)
-                    <p><b>Orthopedic Technician: </b>{{ $orthopedic_technician->name }}</p>
-                    <p><b>Contact No.: </b>{{ $orthopedic_technician->contact_number }}</p>
-                    @endforeach
+                    <p><b>Orthopedic Technician: </b>{{ $orders->assigned_technician }}</p>
+                    <p><b>Contact No.: </b>{{ $orders->technician_contact_number }}</p>
 
                 </div>
                 <div class="col-md-6">
