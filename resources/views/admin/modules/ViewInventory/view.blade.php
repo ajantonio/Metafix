@@ -30,7 +30,7 @@
                             @foreach($orthopedic_implant->grades as $grade)
                             <td>{{ $grade->grade_name }}</td>
                             @endforeach
-                            <td>PHP {{ $orthopedic_implant->price }}.00</td>
+                            <td>₱ {{ $orthopedic_implant->price }}.00</td>
                             @if($orthopedic_implant->diameter == '')
                             <td class="text-danger"> N/A </td>
                             @else

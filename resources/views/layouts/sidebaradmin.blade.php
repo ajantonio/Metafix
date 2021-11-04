@@ -10,10 +10,6 @@
                 <div class="sb-sidenav-menu-heading text-white">Manage Transactions</div>
                 <a class="nav-link" href="">
                     <div class="sb-nav-link-icon"></div>
-                    Add Quotation
-                </a>
-                <a class="nav-link" href="">
-                    <div class="sb-nav-link-icon"></div>
                     Check History Transactions
                 </a>
                 <div class="sb-sidenav-menu-heading text-white">Inventory Management</div>

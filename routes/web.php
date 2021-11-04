@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth', 'doctor']], function () {
     // Homepage
     Route::get('/home', function () {
         return view('orthopedicDoctor.home');
-    });
+    })->name('orthopedicDoctor.home');
 
     // 'Order Orthopedic Implants' Module
     Route::group(['prefix' => 'orderorthopedicimplants'], function () {
@@ -47,6 +47,8 @@ Route::group(['middleware' => ['auth', 'doctor']], function () {
         Route::get('/implant/{id}', 'OrthopedicDoctor\OrderOrthopedicImplantController@show')->name('orderorthopedicimplant.show.screw');
         Route::get('/addToCart/{orthopedic_implant}', 'OrthopedicDoctor\CartController@addToCart')->name('orderorthopedicimplant.add.screw.cart');
         Route::get('/checkout/{amount}', 'OrthopedicDoctor\CartController@checkout')->name('orderorthopedicimplant.cart.checkout');
+        Route::get('/hospitaladdresses/{id}', 'OrthopedicDoctor\CartController@loadHospitalAddress')->name('orderorthopedicimplant.surgery.address');
+        Route::match(['get', 'post'], '/quotation', 'OrthopedicDoctor\CartController@generateQuotation')->name('orderorthopedicimplant.generate.quotation');
     });
 
     // 'View Cart' module
@@ -61,6 +63,7 @@ Route::group(['middleware' => ['auth', 'doctor']], function () {
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
 
     // Homepage
+    // admin/home
     Route::get('/home', function () {
         return view('admin.home');
     });
