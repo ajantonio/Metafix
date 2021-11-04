@@ -28,7 +28,8 @@ class AddOrthopedicTechnicians extends Controller
             'name' => $request->name,
             'image' => $image,
             'contact_number' => $request->contact_number,
-            'status' => 'On hold'
+            'status' => 'On hold',
+            'email' => $request->email
         ]);
 
         return redirect()->back()->with('message', 'Orthopedic technician added successfully');

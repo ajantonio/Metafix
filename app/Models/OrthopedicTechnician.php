@@ -8,7 +8,7 @@ use App\Models\Order;
 
 class OrthopedicTechnician extends Model
 {
-    protected $fillable = ['image', 'status', 'name', 'contact_number'];
+    protected $fillable = ['image', 'status', 'name', 'contact_number', 'email'];
 
     public function order()
     {

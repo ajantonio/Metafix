@@ -35,6 +35,17 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
+                                <div class="form-group col-md-12">
+                                    <label for="" class="mb-2"><b>Email</b></label>
+                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror">
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mt-2">
                                 <div class="form-group col-md-6">
                                     <label for="" class="mb-2"><b>Contact No.</b></label>
                                     <input type="text" name="contact_number" class="form-control @error('contact_number') is-invalid @enderror">
