@@ -81,8 +81,11 @@ class RegisterController extends Controller
             'email' => $user['email'],
             'contact_number' => $user['contact_number'],
             'password' =>  Hash::make($user['password']), // default hash of laravel is bcrypt($user['password'])
-            'is_admin' => $user['type'] == 'admin' ? 1 : 0
+            'is_admin' => $user['type'] == 'admin' ? 1 : 0,
+            'status_id' => 1   
         ]);
+
+        // notify admin on user account creation
 
         return $newUser;
     }

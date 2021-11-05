@@ -30,6 +30,11 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function status ()
+    {
+        return $this->hasOne(Status::class, 'id', 'status_id');
+    }
+
 
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -45,7 +50,7 @@ class User extends Authenticatable
         'orthopedic_license_number',
         'username', 
         'password', 
-        'status', 
+        'status_id', 
         'email', 
         'contact_number', 
         'is_admin'

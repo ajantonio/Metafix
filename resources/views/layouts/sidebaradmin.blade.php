@@ -3,7 +3,7 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <div class="sb-sidenav-menu-heading text-white">Manage User Accounts</div>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('admin.accounts.index') }}">
                     <div class="sb-nav-link-icon"></div>
                     View Accounts
                 </a>

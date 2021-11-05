@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('middle_name', 45)->nullable();
             $table->string('last_name', 45);
             $table->string('orthopedic_license_number', 45)->nullable();
-            $table->string('email', 45)->nullable();
-            $table->string('password');
-            $table->enum('status', ['accepted', 'pending'])->nullable();
+            $table->string('email', 45)->nullable()->unique();
+            $table->string('password')->nullable();
+            $table->foreignId('status_id')->references('id')->on('statuses');
             $table->string('contact_number', 45);
             $table->boolean('is_admin')->default('0');
             $table->rememberToken();
