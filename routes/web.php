@@ -14,7 +14,11 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/about', 'HomeController@about')->name('about');
+Route::get('/faq', 'HomeController@faq')->name('faq');
+
+Route::get('/login', function () {
     return view('auth.login');
 });
 
@@ -25,7 +29,7 @@ Route::get('/', function () {
 // Route::post('/register', [RegisterController::class, 'store'])
 //                 ->middleware('guest');
 
-Auth::routes(); 
+Auth::routes();
 
 // Route::group(['middleware' => 'guest'], function () {
 //     Route::get('/login', [LoginController::class, 'index'])->name('login');

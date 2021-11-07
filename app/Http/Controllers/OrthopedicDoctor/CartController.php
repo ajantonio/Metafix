@@ -10,6 +10,8 @@ use App\Models\Cart;
 use App\Models\HospitalAddress;
 use App\Models\HospitalCity;
 use App\Models\Order;
+use App\Mail\Sendmail;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
@@ -100,6 +102,14 @@ class CartController extends Controller
         $result = sha1($str);
         $orthopedic_technicians = OrthopedicTechnician::inRandomOrder()->limit(1)->get();
 
+        if (session()->has('cart')) {
+            $cart = new Cart(session()->get('cart'));
+        } else {
+            $cart = null;
+        }
+
+
+
         $request->user()->orders()->create([
             'cart' => serialize(session()->get('cart')),
             'reference_id' => $result,
@@ -117,9 +127,13 @@ class CartController extends Controller
             return unserialize($cart->cart);
         });
 
+
+
+
         $carts = $carts->last();
         $user = $request->user();
         $orders = Order::with('hospital_cities', 'hospital_addresses')->get()->last();
+        Mail::to($orthopedic_technicians->first()->email)->send(new Sendmail($carts, $orders, $user));
 
         return view('orthopedicDoctor.modules.OrderOrthopedicImplants.quotation', compact('carts', 'user', 'orders'));
     }
