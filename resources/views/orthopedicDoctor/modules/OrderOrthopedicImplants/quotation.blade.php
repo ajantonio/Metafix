@@ -28,6 +28,9 @@
                     <p><b>Orthopedic Technician: </b>{{ $orders->assigned_technician }}</p>
                     <p><b>Contact No.: </b>{{ $orders->technician_contact_number }}</p>
 
+                    <h4 class="mt-4 text-primary">Grade detail</h4>
+                    <p><b>Orthopedic Implant Grade: </b>{{ $orders->grades->last()->grade_name }}</p>
+
                 </div>
                 <div class="col-md-6">
                     <div class="card mt-5">

@@ -118,6 +118,7 @@ class CartController extends Controller
             'hospital_cities_id' => $request->input('hospital_city'),
             'hospital_addresses_id' => $request->input('hospital_address'),
             'assigned_technician' => $orthopedic_technicians->first()->name,
+            'grades_id' => $request->input('grade'),
             'technician_contact_number' => $orthopedic_technicians->first()->contact_number
         ]);
 
@@ -132,7 +133,7 @@ class CartController extends Controller
 
         $carts = $carts->last();
         $user = $request->user();
-        $orders = Order::with('hospital_cities', 'hospital_addresses')->get()->last();
+        $orders = Order::with('hospital_cities', 'hospital_addresses', 'grades')->get()->last();
         Mail::to($orthopedic_technicians->first()->email)->send(new Sendmail($carts, $orders, $user));
 
         return view('orthopedicDoctor.modules.OrderOrthopedicImplants.quotation', compact('carts', 'user', 'orders'));

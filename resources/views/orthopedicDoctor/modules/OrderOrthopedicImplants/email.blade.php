@@ -17,6 +17,10 @@
         <p><b>Surgery Time.: </b>{{ $orders->surgery_time }}</p>
         <p><b>Hospital City: </b>{{ $orders->hospital_cities->last()->city }}</p>
         <p><b>Hospital Address: </b>{{ $orders->hospital_addresses->last()->address }}</p>
+
+        <br>
+        <h3>Grade detail</h3>
+        <p><b>Orthopedic Implant Grade: </b>{{ $orders->grades->last()->grade_name }}</p>
     </div>
     <table class="table">
         <thead>

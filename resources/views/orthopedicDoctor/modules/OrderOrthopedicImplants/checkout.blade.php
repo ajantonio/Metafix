@@ -91,6 +91,20 @@
                                             @enderror
                                         </select>
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="mb-2 mt-2"><b>Grade</b></label>
+                                        <select name="grade" class="form-control @error('grade') is-invalid @enderror">
+                                            <option value="">Select</option>
+                                            @foreach(App\Models\Grade::all() as $grade)
+                                            <option value="{{ $grade->id }}">{{ $grade->grade_name }}</option>
+                                            @endforeach
+                                            @error('grade')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </select>
+                                    </div>
                                     <div class="form-group col-md-12">
                                         <label class="mb-2 mt-2"><b>Hospital Address</b></label>
                                         <select name="hospital_address" id="address" name="hospital_address" class="form-control @error('hospital_address') is-invalid @enderror">
