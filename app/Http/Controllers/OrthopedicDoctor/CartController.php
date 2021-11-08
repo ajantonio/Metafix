@@ -12,6 +12,8 @@ use App\Models\HospitalCity;
 use App\Models\Order;
 use App\Mail\Sendmail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
+
 
 class CartController extends Controller
 {
@@ -89,7 +91,7 @@ class CartController extends Controller
         return response()->json($hospital_addresses);
     }
 
-    public function generateQuotation(Request $request)
+    public function generateQuotation(Request $request, OrthopedicImplant $orthopedic_implant)
     {
         $this->validate($request, [
             'surgery_date' => 'required',
@@ -99,7 +101,7 @@ class CartController extends Controller
         ]);
 
         $str = rand();
-        $result = sha1($str);
+        $reference_id = sha1($str);
         $orthopedic_technicians = OrthopedicTechnician::inRandomOrder()->limit(1)->get();
 
         if (session()->has('cart')) {
@@ -112,7 +114,7 @@ class CartController extends Controller
 
         $request->user()->orders()->create([
             'cart' => serialize(session()->get('cart')),
-            'reference_id' => $result,
+            'reference_id' => $reference_id,
             'surgery_date' => $request->surgery_date,
             'surgery_time' => date('h:i:s', strtotime($request->start_reservation_time)),
             'hospital_cities_id' => $request->input('hospital_city'),
@@ -129,12 +131,19 @@ class CartController extends Controller
         });
 
 
-
-
         $carts = $carts->last();
         $user = $request->user();
         $orders = Order::with('hospital_cities', 'hospital_addresses', 'grades')->get()->last();
+
+        foreach ($carts->items as $cart) {
+            $quantity_implant = DB::table('orthopedic_implants')->where('id', $cart['id'])->decrement('quantity', $cart['quantity']);
+        }
+
         Mail::to($orthopedic_technicians->first()->email)->send(new Sendmail($carts, $orders, $user));
+
+        // Reduce the quantity based on the number of order orthopedic implant by the doctor
+
+
 
         return view('orthopedicDoctor.modules.OrderOrthopedicImplants.quotation', compact('carts', 'user', 'orders'));
     }

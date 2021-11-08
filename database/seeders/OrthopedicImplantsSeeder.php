@@ -27,6 +27,8 @@ class OrthopedicImplantsSeeder extends Seeder
             'price' => 1200,
             'diameter' => null,
             'length' => '3.5mm',
+            'quantity' => rand(80, 100)
+
         ]);
 
         OrthopedicImplant::firstOrCreate([
@@ -40,6 +42,7 @@ class OrthopedicImplantsSeeder extends Seeder
             'price' => 1050,
             'diameter' => null,
             'length' => '6.5mm',
+            'quantity' => rand(80, 100)
         ]);
 
         OrthopedicImplant::firstOrCreate([
@@ -53,6 +56,8 @@ class OrthopedicImplantsSeeder extends Seeder
             'price' => 850,
             'diameter' => null,
             'length' => '6.5mm',
+            'quantity' => rand(80, 100)
+
         ]);
 
         OrthopedicImplant::firstOrCreate([
@@ -66,6 +71,8 @@ class OrthopedicImplantsSeeder extends Seeder
             'price' => 8750,
             'diameter' => '4.5mm',
             'length' => null,
+            'quantity' => rand(80, 100)
+
         ]);
 
         OrthopedicImplant::firstOrCreate([
@@ -78,6 +85,8 @@ class OrthopedicImplantsSeeder extends Seeder
             'price' => 6500,
             'diameter' => '4.5mm',
             'length' => null,
+            'quantity' => rand(80, 100)
+
         ]);
 
         OrthopedicImplant::firstOrCreate([
@@ -91,6 +100,8 @@ class OrthopedicImplantsSeeder extends Seeder
             'price' => 9650,
             'diameter' => '5.0mm',
             'length' => null,
+            'quantity' => rand(80, 100)
+
         ]);
     }
 }
