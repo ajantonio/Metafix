@@ -97,6 +97,7 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
         return $this->registered($request, $user)
             // ?: redirect($this->redirectPath());
-            ?: redirect()->route('home')->with('success', 'You are successfully Registered!');
+            ?: redirect()->route('register')->with('message', "Your account is now under evaluation. Please wait for administrator's approval to 
+            officially register your account in our system.");
     }
 }

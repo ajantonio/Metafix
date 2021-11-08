@@ -8,6 +8,11 @@ Create an Account
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-4">
+            @if(Session::has('message'))
+            <div class="alert alert-success">
+                {{ Session::get('message') }}
+            </div>
+            @endif
             <div class="card">
                 <div class="card-header">{{ __('Create an account') }}</div>
 
@@ -20,6 +25,7 @@ Create an Account
                     </ul>
                 </div>
                 @endif
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
