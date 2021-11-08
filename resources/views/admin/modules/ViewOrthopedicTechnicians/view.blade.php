@@ -25,9 +25,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $i = 1;
+                        @endphp
                         @foreach($orthopedic_technician as $orthopedic_technician)
                         <tr>
-                            <th scope="row">{{ $orthopedic_technician->id }}</th>
+                            <th scope="row">{{ $i++ }}</th>
                             <td><img src="{{ Storage::url($orthopedic_technician->image) }}" style="width: 100px; height: 100px;"></td>
                             <td>{{ $orthopedic_technician->name }}</td>
                             <td>{{ $orthopedic_technician->email }}</td>
@@ -40,7 +43,7 @@
                             <td>
                                 <a href="{{ route('vieworthopedictechnicians.edit', [$orthopedic_technician->id]) }}"><button class="btn btn-success mb-2">Edit</button></a>
                                 @if($orthopedic_technician->status == 'On hold')
-                                <form action="{{ route('vieworthopedictechnicians.delete', [$orthopedic_technician->id]) }}" method="POST" onsubmit="return confirmDelete()">
+                                <form action="{{ route('vieworthopedictechnicians.delete', [$orthopedic_technician->id]) }}" method="POST" onsubmit="return confirmDeleteTechnician()">
                                     @csrf
                                     <button class="btn btn-danger">Remove</button>
                                 </form>

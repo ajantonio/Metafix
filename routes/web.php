@@ -82,6 +82,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     // 'View Inventory' Module
     Route::group(['prefix' => 'viewinventory', 'namespace' => 'Administrator', 'as' => 'viewinventory.'], function () {
         Route::get('/', 'ViewInventory@index')->name('view');
+        Route::post('/delete/{orthopedic_implant}', 'ViewInventory@destroy')->name('delete');
+        Route::get('/edit/{orthopedic_implant}', 'ViewInventory@edit')->name('edit');
+        Route::put('/update/{orthopedic_technician}', 'ViewInventory@update')->name('update');
     });
 
     // 'Add Orthopedic Implants' Module

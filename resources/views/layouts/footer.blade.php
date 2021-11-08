@@ -6,8 +6,12 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
 <script type="text/javascript">
-    function confirmDelete() {
+    function confirmDeleteTechnician() {
         return confirm('Are you sure you want to remove this orthopedic technician?');
+    }
+
+    function confirmDeleteImplant() {
+        return confirm('Are you sure you want to remove this orthopedic implant?');
     }
 </script>
 </body>

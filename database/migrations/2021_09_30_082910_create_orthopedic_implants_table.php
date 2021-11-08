@@ -20,7 +20,7 @@ class CreateOrthopedicImplantsTable extends Migration
             $table->longText('description');
             $table->integer('screw_types_id')->nullable();
             $table->integer('plate_types_id')->nullable();
-            $table->integer('grades_id');
+            $table->integer('grades_id')->nullable();
             $table->integer('price');
             $table->string('diameter', 45)->nullable();
             $table->string('length', 45)->nullable();
