@@ -100,9 +100,17 @@ class CartController extends Controller
             'hospital_address' => 'required'
         ]);
 
+        // Produce a hash value that will serve as a reference id
         $str = rand();
         $reference_id = sha1($str);
-        $orthopedic_technicians = OrthopedicTechnician::inRandomOrder()->limit(1)->get();
+
+        // Get any one random, available orthopedic technician
+        $orthopedic_technicians = OrthopedicTechnician::inRandomOrder()->where('status', 'On hold')->limit(1)->get();
+
+        // You can only update a collection if you use loop
+        foreach ($orthopedic_technicians as $technician) {
+            $technician->update(['status' => 'Working']);
+        }
 
         if (session()->has('cart')) {
             $cart = new Cart(session()->get('cart'));
@@ -124,6 +132,7 @@ class CartController extends Controller
             'technician_contact_number' => $orthopedic_technicians->first()->contact_number
         ]);
 
+        // Delete all the items in the cart after inserting its data into the database
         session()->forget('cart');
         $order = $request->user()->orders;
         $carts = $order->transform(function ($cart, $key) {
@@ -135,13 +144,13 @@ class CartController extends Controller
         $user = $request->user();
         $orders = Order::with('hospital_cities', 'hospital_addresses', 'grades')->get()->last();
 
+        // Reduce the quantity based on the number of order orthopedic implant by the doctor
         foreach ($carts->items as $cart) {
             $quantity_implant = DB::table('orthopedic_implants')->where('id', $cart['id'])->decrement('quantity', $cart['quantity']);
         }
 
+        // Send email to the assigned orthopedic technician
         Mail::to($orthopedic_technicians->first()->email)->send(new Sendmail($carts, $orders, $user));
-
-        // Reduce the quantity based on the number of order orthopedic implant by the doctor
 
 
 

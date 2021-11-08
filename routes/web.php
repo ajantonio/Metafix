@@ -25,19 +25,10 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-// Route::get('/register', [RegisterController::class, 'create'])
-//                 ->middleware('guest')
-//                 ->name('register');
-
-// Route::post('/register', [RegisterController::class, 'store'])
-//                 ->middleware('guest');
 
 Auth::routes();
 
-// Route::group(['middleware' => 'guest'], function () {
-//     Route::get('/login', [LoginController::class, 'index'])->name('login');
-//     Route::get('/register', [LoginController::class, 'register'])->name('register');
-// });
+
 
 // Orthopedic Doctor Routes
 Route::group(['middleware' => ['auth', 'doctor']], function () {
@@ -102,19 +93,3 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::post('/', 'ApprovalController@changeStatus')->name('changeStatus');
     });
 });
-
-
-
-
-/*
- * Set authenticated routes
- */
-//Route::group(['middleware' => ['auth', 'checkAuthStatus']], function () {
-
-    // Homepage
-    //Route::get('home', function () {
-    //    if(auth()->user()->is_admin == 0) {
-    //        return view('orthopedicDoctor.home');
-    //    }
-    //    return view('admin.home');
-    //})->name('home');
