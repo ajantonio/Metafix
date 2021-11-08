@@ -20,6 +20,7 @@
                     </thead>
                     <tbody>
                         @foreach($users as $user)
+                        @if($user->status->id == 1)
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->first_name }} {{ $user->last_name }}</td>
@@ -30,19 +31,20 @@
                                 @if($user->status->id == 1)
                                 <form action="{{ route('admin.accounts.changeStatus') }}" method="POST">
                                     @csrf
-                                    <input type="text" name="status" value="2" hidden/>
+                                    <input type="text" name="status" value="2" hidden />
                                     <input type="text" name="user" value="{{ $user->id }}" hidden />
                                     <button type="submit" class="btn btn-primary">Accept</button>
                                 </form>
                                 <form action="{{ route('admin.accounts.changeStatus') }}" method="POST">
                                     @csrf
-                                    <input type="text" name="status" value="1" hidden/>
+                                    <input type="text" name="status" value="1" hidden />
                                     <input type="text" name="user" value="{{ $user->id }}" hidden />
                                     <button type="submit" class="btn btn-danger">Reject</button>
                                 </form>
                                 @endif
                             </td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

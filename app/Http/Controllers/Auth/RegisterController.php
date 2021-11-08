@@ -8,8 +8,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -58,7 +59,7 @@ class RegisterController extends Controller
             'orthopedic_license_number' => ['string', 'max:20'],
             'username' => ['required', 'string', 'max:20', 'unique:users'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
-            'contact_number' => ['required' , 'string', 'max:11', 'unique:users'],
+            'contact_number' => ['required', 'string', 'max:11', 'unique:users'],
             'password' => ['required', 'confirmed', 'different:username', 'different:email', 'different:contact_number', 'min:8'],
             'type' => ['required']
         ]);
@@ -75,18 +76,27 @@ class RegisterController extends Controller
         $newUser = User::create([
             'username' => $user['username'],
             'first_name' => $user['first_name'],
-            'middle_name' => $user['middle_name'], 
+            'middle_name' => $user['middle_name'],
             'last_name' => $user['last_name'],
             'orthopedic_license_number' => $user['orthopedic_license_number'] ?? null,
             'email' => $user['email'],
             'contact_number' => $user['contact_number'],
             'password' =>  Hash::make($user['password']), // default hash of laravel is bcrypt($user['password'])
             'is_admin' => $user['type'] == 'admin' ? 1 : 0,
-            'status_id' => 1   
+            'status_id' => 1
         ]);
 
         // notify admin on user account creation
 
         return $newUser;
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        return $this->registered($request, $user)
+            // ?: redirect($this->redirectPath());
+            ?: redirect()->route('home')->with('success', 'You are successfully Registered!');
     }
 }

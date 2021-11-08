@@ -34,7 +34,7 @@ class UsersSeeder extends Seeder
             'email' => 'ajantonio@yahoo.com',
             'contact_number' => '09771831344',
             'is_admin' => 0,
-            'status_id' => 1
+            'status_id' => 2
         ]);
     }
 }

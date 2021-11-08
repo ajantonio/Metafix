@@ -6,17 +6,21 @@
         <div class="col-md-8">
             <div class="card mt-4">
                 <div class="card-header">{{ __('Login') }}</div>
-
+                @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+                @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         @if(session()->has('message'))
-                            <p class='alert {{ session()->get('colorClass') }}'>
-                                {{ session()->get('message') }}
-                            </p>
+                        <p class='alert {{ session()->get('colorClass') }}'>
+                            {{ session()->get('message') }}
+                        </p>
                         @endif
- 
+
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
 

@@ -44,6 +44,9 @@ class ApprovalController extends Controller
         $user->status_id = $status == Status::TYPE_ACCEPTED ? Status::TYPE_ACCEPTED : Status::TYPE_REJECTED;
         Mail::to($user->email)->send(new SendMailToDoctors($user));
         $user->save();
+        if ($user->status_id == 3) {
+            $user->delete();
+        }
 
         return redirect()->route('admin.accounts.index');
         // change user status (either accepted or rejected)
