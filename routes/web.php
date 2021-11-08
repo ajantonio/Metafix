@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Administrator\ApprovalController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Administrator\ViewAccounts;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +39,7 @@ Auth::routes();
 //     Route::get('/register', [LoginController::class, 'register'])->name('register');
 // });
 
-
-// Orthopedic Doctor Routes
+   // Orthopedic Doctor Routes
 Route::group(['middleware' => ['auth', 'doctor']], function () {
 
     // Homepage
@@ -93,4 +95,26 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::get('/', 'Administrator\AddOrthopedicImplants@index')->name('addorthopedicimplants.home');
         Route::post('/store', 'Administrator\AddOrthopedicImplants@store')->name('addorthopedicimplants.store');
     });
+
+    // 'View Accounts' Module
+    Route::group(['prefix' => 'accounts', 'as' => 'admin.accounts.'], function () {
+        Route::get('/', [ApprovalController::class, 'index'])->name('index');
+        Route::post('/', [ApprovalController::class, 'changeStatus'])->name('changeStatus');
+    });
 });
+
+
+
+
+/*
+ * Set authenticated routes
+ */
+//Route::group(['middleware' => ['auth', 'checkAuthStatus']], function () {
+
+    // Homepage
+    //Route::get('home', function () {
+    //    if(auth()->user()->is_admin == 0) {
+    //        return view('orthopedicDoctor.home');
+    //    }
+    //    return view('admin.home');
+    //})->name('home');

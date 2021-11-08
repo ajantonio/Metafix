@@ -23,6 +23,5 @@ class Admin
         else {
             return redirect('/home');
         }
-
     }
 }

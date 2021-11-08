@@ -11,6 +11,12 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
+                        @if(session()->has('message'))
+                            <p class='alert {{ session()->get('colorClass') }}'>
+                                {{ session()->get('message') }}
+                            </p>
+                        @endif
+ 
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
 
