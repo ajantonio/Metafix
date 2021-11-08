@@ -104,10 +104,10 @@ class CartController extends Controller
         $str = rand();
         $reference_id = sha1($str);
 
-        // Get any one random, available orthopedic technician
+        // Get one random, available orthopedic technician
         $orthopedic_technicians = OrthopedicTechnician::inRandomOrder()->where('status', 'On hold')->limit(1)->get();
 
-        // You can only update a collection if you use loop
+        // Update the status of the assigned orthopedic technician to 'Working'. You can only update a collection if you use loop
         foreach ($orthopedic_technicians as $technician) {
             $technician->update(['status' => 'Working']);
         }

@@ -74,6 +74,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     // 'View Orthopedic Technicians' Module
     Route::group(['prefix' => 'vieworthopedictechnicians', 'namespace' => 'Administrator', 'as' => 'vieworthopedictechnicians.'], function () {
         Route::get('/', 'ViewOrthopedicTechnicians@index')->name('home');
+        Route::post('/delete/{orthopedic_technician}', 'ViewOrthopedicTechnicians@destroy')->name('delete');
+        Route::get('/edit/{orthopedic_technician}', 'ViewOrthopedicTechnicians@edit')->name('edit');
+        Route::put('/update/{orthopedic_technician}', 'ViewOrthopedicTechnicians@update')->name('update');
     });
 
     // 'View Inventory' Module

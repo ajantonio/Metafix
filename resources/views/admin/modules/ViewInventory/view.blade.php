@@ -18,6 +18,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Diameter</th>
                             <th scope="col">Length</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,13 @@
                             @else
                             <td>{{ $orthopedic_implant->length }}</td>
                             @endif
+                            <td>
+                                <button class="btn btn-success">Edit</button>
+                                <form action="{{ route('vieworthopedictechnicians.delete', [$orthopedic_implant->id]) }}" method="POST" onsubmit="return confirmDelete()">
+                                    {{ method_field('DELETE') }}
+                                    <button class="btn btn-danger">Remove</button>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
