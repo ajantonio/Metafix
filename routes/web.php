@@ -39,7 +39,7 @@ Auth::routes();
 //     Route::get('/register', [LoginController::class, 'register'])->name('register');
 // });
 
-   // Orthopedic Doctor Routes
+// Orthopedic Doctor Routes
 Route::group(['middleware' => ['auth', 'doctor']], function () {
 
     // Homepage
@@ -48,20 +48,20 @@ Route::group(['middleware' => ['auth', 'doctor']], function () {
     })->name('orthopedicDoctor.home');
 
     // 'Order Orthopedic Implants' Module
-    Route::group(['prefix' => 'orderorthopedicimplants'], function () {
-        Route::get('/', 'OrthopedicDoctor\OrderOrthopedicImplantController@index')->name('orderorthopedicimplant.home');
-        Route::get('/implant/{id}', 'OrthopedicDoctor\OrderOrthopedicImplantController@show')->name('orderorthopedicimplant.show.screw');
-        Route::get('/addToCart/{orthopedic_implant}', 'OrthopedicDoctor\CartController@addToCart')->name('orderorthopedicimplant.add.screw.cart');
-        Route::get('/checkout/{amount}', 'OrthopedicDoctor\CartController@checkout')->name('orderorthopedicimplant.cart.checkout');
-        Route::get('/hospitaladdresses/{id}', 'OrthopedicDoctor\CartController@loadHospitalAddress')->name('orderorthopedicimplant.surgery.address');
-        Route::match(['get', 'post'], '/quotation', 'OrthopedicDoctor\CartController@generateQuotation')->name('orderorthopedicimplant.generate.quotation');
+    Route::group(['prefix' => 'orderorthopedicimplants', 'namespace' => 'OrthopedicDoctor', 'as' => 'orderorthopedicimplant.'], function () {
+        Route::get('/', 'OrderOrthopedicImplantController@index')->name('home');
+        Route::get('/implant/{id}', 'OrderOrthopedicImplantController@show')->name('screw');
+        Route::get('/addToCart/{orthopedic_implant}', 'CartController@addToCart')->name('add.screw.cart');
+        Route::get('/checkout/{amount}', 'CartController@checkout')->name('cart.checkout');
+        Route::get('/hospitaladdresses/{id}', 'CartController@loadHospitalAddress')->name('surgery.address');
+        Route::match(['get', 'post'], '/quotation', 'CartController@generateQuotation')->name('generate.quotation');
     });
 
     // 'View Cart' module
-    Route::group(['prefix' => 'viewcart'], function () {
-        Route::get('/', 'OrthopedicDoctor\CartController@showCart')->name('viewcart.home');
-        Route::post('/orthopedicimplants/{orthopedic_implant}', 'OrthopedicDoctor\CartController@updateCart')->name('viewcart.update');
-        Route::post('/delete/{orthopedic_implant}', 'OrthopedicDoctor\CartController@removeCart')->name('viewcart.remove');
+    Route::group(['prefix' => 'viewcart', 'namespace' => 'OrthopedicDoctor', 'as' => 'viewcart.'], function () {
+        Route::get('/', 'CartController@showCart')->name('home');
+        Route::post('/orthopedicimplants/{orthopedic_implant}', 'CartController@updateCart')->name('update');
+        Route::post('/delete/{orthopedic_implant}', 'CartController@removeCart')->name('remove');
     });
 });
 
@@ -75,31 +75,31 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     });
 
     // 'Add Orthopedic Technicians' Module
-    Route::group(['prefix' => 'addorthopedictechnicians'], function () {
-        Route::get('/', 'Administrator\AddOrthopedicTechnicians@index')->name('addorthopedictechnicians.home');
-        Route::post('/store', 'Administrator\AddOrthopedicTechnicians@store')->name('addorthopedictechnicians.store');
+    Route::group(['prefix' => 'addorthopedictechnicians', 'namespace' => 'Administrator', 'as' => 'addorthopedictechnicians.'], function () {
+        Route::get('/', 'AddOrthopedicTechnicians@index')->name('home');
+        Route::post('/store', 'AddOrthopedicTechnicians@store')->name('store');
     });
 
     // 'View Orthopedic Technicians' Module
-    Route::group(['prefix' => 'vieworthopedictechnicians'], function () {
-        Route::get('/', 'Administrator\ViewOrthopedicTechnicians@index')->name('vieworthopedictechnicians.home');
+    Route::group(['prefix' => 'vieworthopedictechnicians', 'namespace' => 'Administrator', 'as' => 'vieworthopedictechnicians.'], function () {
+        Route::get('/', 'ViewOrthopedicTechnicians@index')->name('home');
     });
 
     // 'View Inventory' Module
-    Route::group(['prefix' => 'viewinventory'], function () {
-        Route::get('/', 'Administrator\ViewInventory@index')->name('viewinventory.view');
+    Route::group(['prefix' => 'viewinventory', 'namespace' => 'Administrator', 'as' => 'viewinventory.'], function () {
+        Route::get('/', 'ViewInventory@index')->name('view');
     });
 
     // 'Add Orthopedic Implants' Module
-    Route::group(['prefix' => 'addorthopedicimplants'], function () {
-        Route::get('/', 'Administrator\AddOrthopedicImplants@index')->name('addorthopedicimplants.home');
-        Route::post('/store', 'Administrator\AddOrthopedicImplants@store')->name('addorthopedicimplants.store');
+    Route::group(['prefix' => 'addorthopedicimplants', 'namespace' => 'Administrator', 'as' => 'addorthopedicimplants.'], function () {
+        Route::get('/', 'AddOrthopedicImplants@index')->name('home');
+        Route::post('/store', 'AddOrthopedicImplants@store')->name('store');
     });
 
     // 'View Accounts' Module
-    Route::group(['prefix' => 'accounts', 'as' => 'admin.accounts.'], function () {
-        Route::get('/', [ApprovalController::class, 'index'])->name('index');
-        Route::post('/', [ApprovalController::class, 'changeStatus'])->name('changeStatus');
+    Route::group(['prefix' => 'accounts', 'namespace' => 'Administrator', 'as' => 'admin.accounts.'], function () {
+        Route::get('/', 'ApprovalController@index')->name('index');
+        Route::post('/', 'ApprovalController@changeStatus')->name('changeStatus');
     });
 });
 
