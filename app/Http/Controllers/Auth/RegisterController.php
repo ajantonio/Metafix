@@ -57,7 +57,7 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'orthopedic_license_number' => ['string', 'max:20'],
             'username' => ['required', 'string', 'max:20', 'unique:users'],
-            'email' => ['nullable', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'email', 'max:255', 'unique:users'],
             'contact_number' => ['required' , 'string', 'max:11', 'unique:users'],
             'password' => ['required', 'confirmed', 'different:username', 'different:email', 'different:contact_number', 'min:8'],
             'type' => ['required']

@@ -46,12 +46,6 @@
                         @endforeach
                     </tbody>
                 </table>
-
-                <div class="controls">
-
-                    <button type="submit" class="btn btn-success">
-                    Accept</button>
-
             </div>
         </div>
 
