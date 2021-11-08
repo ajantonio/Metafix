@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Status;
+use App\Mail\SendMailToDoctors;
+use Illuminate\Support\Facades\Mail;
 
 class ApprovalController extends Controller
 {
@@ -16,7 +18,7 @@ class ApprovalController extends Controller
     // when accept button is clicked, change user status to Status::ACCEPTED
     // when reject button is clicked, change user status to Status::REJECTED
 
-    public function index ()
+    public function index()
     {
         // list all registered doctors
         $users = User::with('status')->where('is_admin', 0)->get();
@@ -26,7 +28,7 @@ class ApprovalController extends Controller
         ]);
     }
 
-    public function changeStatus (Request $request)
+    public function changeStatus(Request $request)
     {
         $request->only('user', 'status');
 
@@ -40,6 +42,7 @@ class ApprovalController extends Controller
         $user = User::findOrFail($request['user']);
 
         $user->status_id = $status == Status::TYPE_ACCEPTED ? Status::TYPE_ACCEPTED : Status::TYPE_REJECTED;
+        Mail::to($user->email)->send(new SendMailToDoctors($user));
         $user->save();
 
         return redirect()->route('admin.accounts.index');

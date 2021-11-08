@@ -15,15 +15,13 @@ class ViewAccounts extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    
+
 
     public function index()
     {
         $users = User::with('status')->where('is_admin', 0)->get();
 
-        return view('admin.modules.accounts.index')->with([
-            'users' => $users
-        ]);
+        return view('admin.modules.accounts.index', compact('users'));
     }
 
     /**
