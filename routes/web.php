@@ -48,11 +48,17 @@ Route::group(['middleware' => ['auth', 'doctor']], function () {
         Route::match(['get', 'post'], '/quotation', 'CartController@generateQuotation')->name('generate.quotation');
     });
 
-    // 'View Cart' module
+    // 'View Cart' Module
     Route::group(['prefix' => 'viewcart', 'namespace' => 'OrthopedicDoctor', 'as' => 'viewcart.'], function () {
         Route::get('/', 'CartController@showCart')->name('home');
         Route::post('/orthopedicimplants/{orthopedic_implant}', 'CartController@updateCart')->name('update');
         Route::post('/delete/{orthopedic_implant}', 'CartController@removeCart')->name('remove');
+    });
+
+    // 'Check History Transaction' Module
+    Route::group(['prefix' => 'doctorhistory', 'namespace' => 'OrthopedicDoctor', 'as' => 'checkhistorytransaction.'], function () {
+        Route::get('/', 'CheckHistoryTransactionController@index')->name('home');
+        Route::get('/transaction/{orders}', 'CheckHistoryTransactionController@show')->name('view');
     });
 });
 
@@ -97,5 +103,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::group(['prefix' => 'accounts', 'namespace' => 'Administrator', 'as' => 'admin.accounts.'], function () {
         Route::get('/', 'ApprovalController@index')->name('index');
         Route::post('/', 'ApprovalController@changeStatus')->name('changeStatus');
+    });
+
+    // 'Check History Transaction' Module
+    Route::group(['prefix' => 'history', 'namespace' => 'Administrator', 'as' => 'checkhistorytransactionadmin.'], function () {
+        Route::get('/', 'CheckHistoryTransactionAdminController@index')->name('home');
+        Route::get('/transaction/{orders}', 'CheckHistoryTransactionAdminController@show')->name('view');
     });
 });

@@ -9,7 +9,7 @@
                 </a>
 
                 <div class="sb-sidenav-menu-heading text-white">Transaction</div>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('checkhistorytransaction.home') }}">
                     <div class="sb-nav-link-icon"></div>
                     Check History Transactions
                 </a>
