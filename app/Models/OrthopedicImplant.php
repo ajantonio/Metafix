@@ -11,7 +11,7 @@ use App\Models\PlateType;
 class OrthopedicImplant extends Model
 {
     protected $fillable = [
-        'name', 'image', 'description', 'screw_types_id', 'price', 'plate_types_id', 'grades_id', 'diameter', 'length'
+        'name', 'image', 'description', 'screw_types_id', 'price', 'quantity', 'plate_types_id', 'grades_id', 'diameter', 'length'
     ];
 
     public function grades()
