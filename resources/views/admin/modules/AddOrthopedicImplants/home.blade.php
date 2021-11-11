@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <div class="form-group col-md-10">
+                                <div class="form-group col-md-8">
                                     <label for="" class="mb-2"><b>Image</b></label>
                                     <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" id="customFile">
                                     @error('image')
@@ -73,6 +73,10 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="" class="mb-2"><b>Quantity</b></label>
+                                    <input type="number" name="quantity" class="form-control">
                                 </div>
                             </div>
                             <div class="row mt-2">

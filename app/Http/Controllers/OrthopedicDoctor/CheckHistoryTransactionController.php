@@ -26,7 +26,6 @@ class CheckHistoryTransactionController extends Controller
             return unserialize($cart->cart);
         });
 
-        dd($carts);
         return view('orthopedicDoctor.modules.CheckHistoryTransaction.view', compact('orders', 'carts'));
     }
 }

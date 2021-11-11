@@ -19,7 +19,8 @@ class AddOrthopedicTechnicians extends Controller
         $this->validate($request, [
             'name' => 'required',
             'image' => 'required|mimes:png,jpeg',
-            'contact_number' => 'required'
+            'contact_number' => 'required',
+            'email' => 'required'
         ]);
 
         $image = $request->file('image')->store('public/images');

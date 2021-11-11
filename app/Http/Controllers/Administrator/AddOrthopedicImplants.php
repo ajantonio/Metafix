@@ -34,6 +34,7 @@ class AddOrthopedicImplants extends Controller
             'plate_types_id' => $request->plate_type,
             'grades_id' => $request->grade,
             'price' => $request->price,
+            'quantity' => $request->quantity,
             'diameter' => $request->diameter,
             'length' => $request->length,
             'image' => $image,
