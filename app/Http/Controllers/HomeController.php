@@ -34,4 +34,9 @@ class HomeController extends Controller
     {
         return view('faq');
     }
+
+    public function termsAndPolicy()
+    {
+        return view('auth.termsandpolicy');
+    }
 }

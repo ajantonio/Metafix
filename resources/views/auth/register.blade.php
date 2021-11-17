@@ -151,6 +151,15 @@ Create an Account
                             </div>
                         </div>
 
+                        <div class="form-group row ml-2">
+                            <label for="termsAndcondition" class="col-md-4 col-form-label text-md-right">I agree to the <a href="{{ route('terms.and.policy') }}">terms & policy</a></label>
+
+                            <div class="col-md-6 form-check mt-2">
+                                <input name="terms_and_condition" class="form-check-input @error('terms_and_condition') is-invalid @enderror" type="checkbox" value="1">
+
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

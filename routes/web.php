@@ -25,6 +25,7 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+Route::get('/terms', 'HomeController@termsAndPolicy')->name('terms.and.policy');
 
 Auth::routes();
 
