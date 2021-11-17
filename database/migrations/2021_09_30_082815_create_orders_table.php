@@ -22,6 +22,7 @@ class CreateOrdersTable extends Migration
             $table->integer('hospital_cities_id')->nullable();
             $table->integer('grades_id')->nullable();
             $table->integer('hospital_addresses_id')->nullable();
+            $table->string('remark', 255)->nullable();
             $table->string('assigned_technician', 45);
             $table->string('technician_contact_number', 45);
             $table->text('cart');

@@ -44,7 +44,7 @@
                         <td>
                             <form action="{{ route('viewcart.update', $orthopedic_implant['id']) }}" method="POST">
                                 @csrf
-                                <input type="text" name="quantity" value="{{ $orthopedic_implant['quantity'] }}">
+                                <input type="number" name="quantity" value="{{ $orthopedic_implant['quantity'] }}">
                                 <button class="btn btn-secondary btn-sm"><i class="fas fa-sync"></i>update</button>
                             </form>
                         </td>

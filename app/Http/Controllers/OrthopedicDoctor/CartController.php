@@ -31,26 +31,34 @@ class CartController extends Controller
         return redirect()->back()->with('message', 'Added to cart successfully');
     }
 
-    public function showCart()
+    public function showCart(OrthopedicImplant $orthopedic_implant)
     {
         if (session()->has('cart')) {
             $cart = new Cart(session()->get('cart'));
         } else {
             $cart = null;
         }
+
+
+
         return view('orthopedicDoctor.modules.ViewCart.cart', compact('cart'));
     }
 
     public function updateCart(Request $request, OrthopedicImplant $orthopedic_implant)
     {
+        $orthopedic_implant = OrthopedicImplant::find($orthopedic_implant->id);
+        $stocks_left_in_the_inventory = $orthopedic_implant->quantity;
+
         $request->validate([
-            'quantity' => 'required|numeric|min:1'
+            'quantity' => 'required|numeric|min:1|max:100|lt:stocks_left_in_the_inventory'
         ]);
 
 
         $cart = new Cart(session()->get('cart'));
         $cart->updateQty($orthopedic_implant->id, $request->quantity);
         session()->put('cart', $cart);
+
+
 
         return redirect()->back()->with('message', 'Item quantity updated successfully');
     }

@@ -13,7 +13,7 @@ class Order extends Model
 {
     protected $fillable = [
         'users_id', 'cart', 'reference_id', 'surgery_time', 'surgery_date', 'hospital_cities_id',
-        'hospital_addresses_id', 'assigned_technician', 'technician_contact_number', 'grades_id'
+        'hospital_addresses_id', 'assigned_technician', 'technician_contact_number', 'grades_id', 'remark'
     ];
 
 
