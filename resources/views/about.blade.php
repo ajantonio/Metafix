@@ -66,7 +66,7 @@
             <div class="row gx-5 align-items-center">
                 <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="{{ asset('about-orthopedic-technicians-one.jpg') }}" alt="..." /></div>
                 <div class="col-lg-6">
-                    <h2 class="fw-bolder">Our founding</h2>
+                    <h2 class="fw-bolder">Our foundation</h2>
                     <p class="lead fw-normal text-muted mb-0">We were working as an orthopedic technician in a hospital called Westech.
                         While working, we saw an opportunity to provide a better orthopedic services to orthopedic doctors. We realized
                         that the hospital that we were working will hinder us from making our vision come to reality. Thus, we decided to

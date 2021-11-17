@@ -54,7 +54,7 @@
             <div class="row gx-5">
                 <div class="col-xl-8">
                     <!-- FAQ Accordion &amp; 1-->
-                    <h2 class="fw-bolder mb-3">Service Location Limitation </h2>
+                    <h2 class="fw-bolder mb-3">Areas Covered</h2>
                     <div class="accordion mb-5" id="accordionExample">
                         <div class="accordion-item">
                             <h3 class="accordion-header" id="headingOne"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Which cities in Philippines that you can only accommodate?</button></h3>
@@ -86,7 +86,7 @@
                         </div>
                     </div>
                     <!-- FAQ Accordion 2-->
-                    <h2 class="fw-bolder mb-3">Website Issues</h2>
+                    <h2 class="fw-bolder mb-3">Website Inquiries</h2>
                     <div class="accordion mb-5 mb-xl-0" id="accordionExample2">
                         <div class="accordion-item">
                             <h3 class="accordion-header" id="headingFour"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">

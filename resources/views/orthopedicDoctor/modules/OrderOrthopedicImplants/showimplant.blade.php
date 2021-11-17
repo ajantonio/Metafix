@@ -35,7 +35,6 @@
                                 <p><b>Price</b>: ₱ {{ $orthopedic_implant->price }}.00</p>
                                 <p><span class="text-secondary">Stock left:</span> {{ $orthopedic_implant->quantity }}</p>
 
-
                                 <a href="{{ route('orderorthopedicimplant.add.screw.cart', [$orthopedic_implant->id]) }}">
                                     <button type="submit" class="btn btn-primary mt-5">
                                         Add to cart
