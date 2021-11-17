@@ -35,12 +35,17 @@
                                 <p><b>Price</b>: ₱ {{ $orthopedic_implant->price }}.00</p>
                                 <p><span class="text-secondary">Stock left:</span> {{ $orthopedic_implant->quantity }}</p>
 
+                                @if($orthopedic_implant->quantity > 0)
                                 <a href="{{ route('orderorthopedicimplant.add.screw.cart', [$orthopedic_implant->id]) }}">
                                     <button type="submit" class="btn btn-primary mt-5">
                                         Add to cart
                                         <i class="fas fa-cart-plus"></i>
                                     </button>
                                 </a>
+                                @else
+                                <p class="text text-danger">No more stocks left in the inventory</p>
+                                @endif
+
                             </section>
                         </aside>
 
