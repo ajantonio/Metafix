@@ -137,7 +137,8 @@ class CartController extends Controller
             'hospital_addresses_id' => $request->input('hospital_address'),
             'assigned_technician' => $orthopedic_technicians->first()->name,
             'grades_id' => $request->input('grade'),
-            'technician_contact_number' => $orthopedic_technicians->first()->contact_number
+            'technician_contact_number' => $orthopedic_technicians->first()->contact_number,
+            'remark' => $request->remark
         ]);
 
         // Delete all the items in the cart after inserting its data into the database

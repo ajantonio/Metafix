@@ -115,6 +115,12 @@
                                             @enderror
                                         </select>
                                     </div>
+                                    <div class="row mt-2">
+                                        <div class="form-group col-md-12">
+                                            <label class="mb-2"><b>Remarks</b> <span class="text text-muted">(optional)</span></label>
+                                            <textarea name="remark" class="form-control"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mt-4">Generate Quotation</button>
