@@ -1,24 +1,17 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p align="center"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 ## Metafix
 
 Metafix is a web application and an orthopedic service online ordering system
 
-## Client's Business Overview
+## Business Overview
 
-The business of the project client is about providing orthopedic services. The focus of their service is to sell orthopedic implant and assist the orthopedic doctor in their orthopedic surgery using the orthopedic implant that the orthopedic doctor bought. Those who assists are called orthopedic technician. Orthopedic technician delivers the orthopedic implant and assists the doctor by utilizing the orthopedic implant during the surgery
+The business of the project client is about providing orthopedic services in San Fernando and Angeles City residing in Pampanga. The focus of their service is to sell orthopedic implant and assist the orthopedic doctor in their orthopedic surgery using the orthopedic implant that the orthopedic doctor bought. Those who assists are called orthopedic technician. Orthopedic technician delivers the orthopedic implant and assists the doctor by utilizing the orthopedic implant during the surgery
 
 ## Motivation
 
-Metafix is initiated by the main contributor and lead developer of the project, Adrian John Antonio. He is also the son of the project client and saw the inefficient business workflow of the client's business and messy organization of orthopedic implants in their business inventory. He found out the solution to the problem after
-constantly meeting with the project client, thus Metafix was initiated.
+Metafix was initiated by the main contributor and lead developer of the project, Adrian John Antonio. He is also the son of the project client and saw the inefficient business workflow of the client's business and messy organization of orthopedic implants in their business inventory. He found out the solution to the problem after
+constantly meeting and asking questions about the business with the project client, thus Metafix was created.
 
 ## Technologies Used
 
@@ -51,7 +44,7 @@ Technology tools used to design the website UI and back-end architecture:
 Packages used to add other website features:
 
 <ul>
-<li>SwiftMailer<li>
+<li>SwiftMailer</li>
 <li>Faker</li>
 </ul>
 
