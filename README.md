@@ -10,13 +10,13 @@ The business of the project client is about providing orthopedic services in San
 
 ## Motivation
 
-Metafix was initiated by the main contributor and lead developer of the project, Adrian John Antonio. He is also the son of the project client and saw the inefficient transaction between the project client and orthopedic doctors and messy organization of orthopedic implants in their business inventory. He found out the solution to the problem after
-constantly meeting and asking questions about the business with the project client. Him and the team wanted to provide solution to the problems stated by the project client to the
+Metafix was initiated by the main contributor and lead developer of the project, Adrian John Antonio. He is also the son of the project client and saw the inefficient transaction between the project client and orthopedic doctors, and messy organization of orthopedic implants in their business inventory. He found out the solution to the problem after
+constantly meeting and asking questions about the business with the project client. Him and the team decided to provide solution to the business problems stated by the project client to the
 lead developer, thus Metafix was created.
 
 ## Problem
 
-Here are the problems identified in the current business workflow:
+Here are the problems identified in the current business workflow of the client's business:
 
 <ul>
 <li>Inefficient manual writing of documentation of orthopedic implants in their inventory</li>
@@ -54,8 +54,10 @@ Here are the solution for each identified problems in the current business workf
 
 The website have a home, FAQ, login, and register page that is transparent to all types of users including guests.
 Currently, the website only has two user types that can access other services of the website: orthopedic doctor and administrator. To register an account in the system as an orthopedic doctor, <b>you need to be a licensed orthopedic doctor</b> otherwise you can't register an account.
-This is because the current business workflow do not permit non-orthopedic doctors to use orthopedic implants to prevent misuse of the product. Orthopedic implants should only be used by orthopedic doctors and technicians. The website adopted this part of business workflow. The administrator have a module where they can view, accept, and reject user accounts. The administrator have the responsibility to accept and delete these accounts. If the pending user account is accepted, the system will automatically email them telling that their account is officially registered in the system and can access different features exclusive for orthopedic doctors. If rejected, the system will automatically email them telling that their account is rejected, thus won't be able to officially register their account. Also, their account record will be deleted.
-
+This is because the current business workflow do not permit non-orthopedic doctors to use orthopedic implants to prevent misuse of the product. Orthopedic implants should only be used by orthopedic doctors and technicians. The website adopted this part of business workflow.
+<br><br>
+The administrator have a module where they can view, accept, and reject user accounts. The administrator have the responsibility to accept and delete these accounts. If the pending user account is accepted, the system will automatically email them telling that their account is officially registered in the system and can access different features exclusive for orthopedic doctors. If rejected, the system will automatically email them telling that their account is rejected, thus won't be able to officially register their account. Also, the record of their account will be deleted in the database.
+<br>
 Here are the exclusive features for orthopedic doctors:
 
 <ul>
@@ -116,5 +118,4 @@ Others:
 
 ## Credits
 
-The team would like to thank <b>Adrian John Antonio</b> for being a main contributor to this repository and <b>John Ace Asia</b> for contributing to this repository as the developer and automation tester of the team. Special thanks to the project client and his wife for consistently collaborating with the product owner, Adrian John Antonio, to make this project a success. Thanks to <b>Sir Jacob A. Catayoc</b>, <b>Jayson M. Pamittan</b>, and <b>Jojo Castillo</b> for being a helpful and excellent mentors of the team.
-Thanks to <b>Joy Hazzel Belanio</b> for the documentation and <b>John Benedict Cruz</b> for the documentation and website tester of the team.
+The team would like to thank <b>Sir Jacob A. Catayoc</b>, <b>Jayson M. Pamittan</b>, and <b>Jojo Castillo</b> for being a helpful and excellent mentors of the team. Thanks to <b>Adrian John Antonio</b> for being a main contributor of this repository as a lead developer, product owner, and architect lead of the project. Thanks to <b>John Ace Asia</b> for contributing to this repository as an assistant developer, project manager, and automation tester of the project. Thanks to <b>Joy Hazzel Belanio</b> for the documentation and <b>John Benedict Cruz</b> for the documentation, quality testing, and wireframe designer of the project. Special thanks to the project client and his wife for consistently collaborating with the team to make this project a success.
