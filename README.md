@@ -118,7 +118,7 @@ Others:
 
 ## Deployment Status
 
-The application is <b>not yet fully deployed</b>. The application will be deployed in the future but only for demonstration purposes unless our project client wants to use our application in the future.
+The application is <b>not yet fully deployed</b>. The application will be deployed in the future.
 
 ## Credits
 
