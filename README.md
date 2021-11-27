@@ -116,6 +116,10 @@ Others:
 <li>Session storage</li>
 </ul>
 
+## Deployment Status
+
+The application is <b>not yet fully deployed</b>. The application will be deployed in the future but only for demonstration purposes unless our project client wants to use our application in the future.
+
 ## Credits
 
 The team would like to thank <b>Sir Jacob A. Catayoc</b>, <b>Jayson M. Pamittan</b>, and <b>Jojo Castillo</b> for being a helpful and excellent mentors of the team. Thanks to <b>Adrian John Antonio</b> for being a main contributor of this repository as a lead developer, product owner, and architect lead of the project. Thanks to <b>John Ace Asia</b> for contributing to this repository as an assistant developer, project manager, and automation tester of the project. Thanks to <b>Joy Hazzel Belanio</b> for the documentation and <b>John Benedict Cruz</b> for the documentation, quality testing, and wireframe designer of the project. Special thanks to the project client and his wife for consistently collaborating with the team to make this project a success.
